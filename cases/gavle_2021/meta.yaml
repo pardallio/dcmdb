@@ -1,0 +1,12 @@
+mcp43h2_prod: 
+
+  file_templates : ['fc*+@LLL@grib_sfxs','fc*+@LLL@grib2_fp']
+
+  atos:
+     path_template : 'ec:/snh/harmonie/mcp43h2_prod/@YYYY@/@MM@/@DD@/@HH@/mbr000/'
+
+  domain : 
+     name : 'METCOOP25D'
+     resolution : 2500
+     levels : 65
+
