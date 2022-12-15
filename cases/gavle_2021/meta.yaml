@@ -1,9 +1,9 @@
 mcp43h2_prod: 
 
-  file_templates : ['fc@YYYY@@MM@@DD@@HH@+@LLL@grib_sfxs','fc@YYYY@@MM@@DD@@HH@+@LLL@grib2_fp']
+  file_templates : ['fc%Y%m%d%H+%LLLgrib_sfxs','fc%Y%m%d%H+%LLLgrib2_fp']
 
   atos:
-     path_template : 'ec:/snh/harmonie/mcp43h2_prod/@YYYY@/@MM@/@DD@/@HH@/mbr000/'
+     path_template : 'ec:/snh/harmonie/mcp43h2_prod/%Y/%m/%d/%H/mbr000/'
 
   domain : 
      name : 'METCOOP25D'

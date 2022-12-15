@@ -30,6 +30,7 @@ def main(argv) :
                       help='Specify name of current host, overrides settings in config file ')
   parser.add_argument('-host',dest="host",help='Set host to check, default is current',required=False,default=None)
   parser.add_argument('-scan',action="store_true",help='Scan case for data',required=False,default=False)
+  parser.add_argument('-copy',action="store_true",help='Copy case',required=False,default=False)
   parser.add_argument('-list',action="store_true",help='List content of a case',required=False,default=False)
   parser.add_argument('-show',action="store_true",help='Show available cases',required=False,default=False)
   parser.add_argument('-v', action='append_const', const=int, help='Increase verbosity for list command in particular')
@@ -55,13 +56,15 @@ def main(argv) :
   config['case'] = args.case.split(':') if args.case is not None else []
   config['printlev'] = set_verbosity(args)
 
-  myc = cases.Case(cases=config['case'],printlev=config['printlev'])
+  myc = cases.Cases(names=config['case'],printlev=config['printlev'])
  
   if args.scan :
     myc.scan()
   elif args.list :
     myc.print()
   elif args.show :
+    myc.show()
+  elif args.copy :
     myc.show()
 
 if __name__ == "__main__":

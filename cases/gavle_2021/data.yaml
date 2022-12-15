@@ -1,8 +1,8 @@
 {
  "atos": {
-  "path_template": "ec:/snh/harmonie/mcp43h2_prod/@YYYY@/@MM@/@DD@/@HH@/mbr000/",
+  "path_template": "ec:/snh/harmonie/mcp43h2_prod/%Y/%m/%d/%H/mbr000/",
   "mcp43h2_prod": {
-   "fc@YYYY@@MM@@DD@@HH@+@LLL@grib_sfxs": {
+   "fc%Y%m%d%H+%LLLgrib_sfxs": {
     "2021-08-16 15:00:00": [
      "000",
      "001",
@@ -706,7 +706,7 @@
      "066"
     ]
    },
-   "fc@YYYY@@MM@@DD@@HH@+@LLL@grib2_fp": {
+   "fc%Y%m%d%H+%LLLgrib2_fp": {
     "2021-08-16 00:00:00": [
      "000",
      "001",
