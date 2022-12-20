@@ -1,2 +1,2 @@
-# dcdb
-The DEODE case data base 
+# dcmdb
+The DEODE case meta database 
