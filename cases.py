@@ -47,7 +47,7 @@ class Cases:
         if re.search(r'^a(a|b|c|d)',host):
             return 'atos'
 
-        return 'atos'
+        return None
 #########################################################################
     def scan(self):
       if isinstance(self.cases,dict):
@@ -88,7 +88,8 @@ class Cases:
 
             res[x] = Case(self.host, self.path, self.printlev, meta, x)
     
-        print("Loaded:",case_list)
+        if self.printlev > 0:
+          print("Loaded:",case_list)
         if len(res) > 1 :
           return res,case_list
         else:
@@ -106,6 +107,10 @@ class Cases:
 
         if printlev is not None:
             self.printlev = printlev
+
+        if self.printlev < 0:
+          print('Cases:',self.names)
+          return
     
         if isinstance(self.cases,dict):
          for name,case in self.cases.items():
@@ -153,6 +158,11 @@ class Case():
     def print(self,printlev=None):
         if printlev is not None:
             self.printlev = printlev
+
+        if self.printlev == 0:
+           print(' Runs:',self.names)
+           return
+
         if isinstance(self.runs,dict):
           for run,exp in self.runs.items():
            exp.print(self.printlev)
@@ -330,7 +340,7 @@ class Exp():
         return result
 
 #########################################################################
-    def print(self, printlev=0):
+    def print(self, printlev=None):
         if printlev is not None:
             self.printlev = printlev
         print('\n ',self.name)
