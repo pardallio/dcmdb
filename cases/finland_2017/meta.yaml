@@ -1,0 +1,25 @@
+cy43_deode_ref_fin: 
+
+  file_templates : ['fc%Y%m%d%H+%LLLgrib_sfxs','fc%Y%m%d%H+%LLLgrib2_fp']
+
+  atos:
+     path_template : 'ec:/fie/harmonie/cy43_deode_ref_fin/%Y/%m/%d/%H/'
+
+  domain : 
+     name : 'METCOOP25D'
+     resolution : 2500
+     levels : 65
+
+cy46h1_deode_nest750_fin_v1:
+
+  file_templates : ['fc%Y%m%d%H+%LLLgrib_sfxs','fc%Y%m%d%H+%LLLgrib2_fp']
+
+  atos:
+     path_template : 'ectmp:/fie/harmonie/cy46h1_deode_nest750_fin_v1/%Y/%m/%d/%H/'
+
+  domain : 
+     name : 'METCOOP25D'
+     resolution : 750
+     levels : 90
+
+
