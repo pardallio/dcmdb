@@ -39,7 +39,7 @@ Running `./chase.py` will show some options. Assuming we're running on atos list
 ```
 ./chase.py -list 
 ```
-where more options can be added
+where more options can be added. Add a few `-v` or `-s` to see more/less information.
 
 ### Generate the data availability information
 
@@ -51,7 +51,7 @@ This will generate the file `cases/MYCASE/data.yaml` containing all dates and le
 
 ### The cases module
 
-The file `cases.py' contains some methods to access information and reconstruct file names. Check `examples.py` for how to use it.
+The file `cases.py` contains some methods to access information and reconstruct file names. Check `examples.py` for how to use it.
 
 ## Caveats
 
