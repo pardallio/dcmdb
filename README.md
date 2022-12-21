@@ -33,6 +33,8 @@ In each `meta.yaml` file we may specify an arbitrary number of experiments/runs.
 
 ## The python support
 
+A module and a command line tool has been created to support inspection of the case content. The yaml files could be access from other languages as well...
+
 ### Command line tool
 
 Running `./chase.py` will show some options. Assuming we're running on atos list cases and their content is done by 
