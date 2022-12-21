@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 from datetime import datetime
-from datetime import timedelta as dt
 import os
 import sys
 import yaml
@@ -228,23 +227,24 @@ class Exp():
         self.domain = val['domain']
         self.data = data
 
-        self.known_keys = { '%Y': 4,    # Year
-                            '%m': 2,    # Month
-                            '%d': 2,    # Day
-                            '%H': 2,    # Hour
-                            '%M': 2,    # Minute
-                            '%LLLL': 4, # Leadtime
-                            '%LLL': 3,  # Leadtime
-                            '*': 0,     # Wildcard
-                          }
 
 #########################################################################
     def check_template(self,x):
 
+      known_keys = { '%Y': 4,    # Year
+                     '%m': 2,    # Month
+                     '%d': 2,    # Day
+                     '%H': 2,    # Hour
+                     '%M': 2,    # Minute
+                     '%LLLL': 4, # Leadtime
+                     '%LLL': 3,  # Leadtime
+                     '*': 0,     # Wildcard
+                   }
+
       mapped_keys = {}
       replace_keys = {}
       y=x
-      for k,v in self.known_keys.items():
+      for k,v in known_keys.items():
          kk = k
          if '%' in k:
            s=f'(\\d{{{v}}})'
@@ -452,8 +452,7 @@ class Exp():
 #########################################################################
 def ecfs_scan(path):
 
- glcmd = ['els',path]
- cmd = subprocess.Popen(glcmd, stdout=subprocess.PIPE)
+ cmd = subprocess.Popen(['els',path], stdout=subprocess.PIPE)
  cmd_out, cmd_err = cmd.communicate()
 
  # Decode and filter output
@@ -461,7 +460,6 @@ def ecfs_scan(path):
  return res
 
 #########################################################################
-
 def find_files(path,prefix=''):
 
   # Scan given path and subdirs and return files matching the pattern
@@ -479,4 +477,3 @@ def find_files(path,prefix=''):
           subresult = [entry.name + "/" + e for e in subresult]
           result.extend(subresult)
   return result
-
