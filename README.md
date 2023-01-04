@@ -2,7 +2,7 @@
 
 ## Introduction
 
-`dcmbd` is an attempt to bring some order in the case stuides performed within DE_330. The initial cases will be done with different setup using different name convenctions. The meta database consists of metadata for individual cases along with data availibility information. The aim is to allow an easy access to data without having to worry to much about the location. 
+`dcmbd` is an attempt to bring some order in the output from the case stuides performed within DE_330. The initial cases will be done with different setup using different name conventions and the idea is to handle these differences in an organized manner. The meta database consists of metadata for individual cases along with data availibility information. The aim is to allow an easy access to data without having to worry to much about the location. 
 
 ## The metadata
 
@@ -23,15 +23,17 @@ mcp43h2_prod:
 ```
 
 where 
- * The top level is a experiment name 
- * `file_templates` describes the files of interest. Note that date/time information is parameterized using standard notation.
- * `atos` here tells us where the data is located. For the future we could consider lumi as well
- * `path_template` the search path for the data, note that ECFS notation is supported
- * `domain` gives some information about the domain used. Could contain geometry information as well
+ * the top level is the experiment name or similar
+ * `file_templates` describes the files of interest. Note that date/time information is parameterized using standard linux/python notation.
+ * `atos` here tells us where the data is located. For the future we could consider lumi and other hosts as well
+ * `path_template` the search path for the data, note that ECFS notation is supported.
+ * `domain` gives some information about the domain used. Could contain geometry information as well.
 
 In each `meta.yaml` file we may specify an arbitrary number of experiments/runs.
 
 ## The python support
+
+A module and a command line tool has been created to support inspection of the case content and recounstruction of file paths. The yaml files of course could be accessed from other languages such as R or julia as well.
 
 ### Command line tool
 
@@ -39,7 +41,7 @@ Running `./chase.py` will show some options. Assuming we're running on atos list
 ```
 ./chase.py -list 
 ```
-where more options can be added
+where more options can be added. Add a few `-v` or `-s` to see more/less information.
 
 ### Generate the data availability information
 
@@ -51,7 +53,7 @@ This will generate the file `cases/MYCASE/data.yaml` containing all dates and le
 
 ### The cases module
 
-The file `cases.py' contains some methods to access information and reconstruct file names. Check `examples.py` for how to use it.
+The file `cases.py` contains some methods to access information and reconstruct file names. Check `examples.py` for how to use it.
 
 ## Caveats
 
