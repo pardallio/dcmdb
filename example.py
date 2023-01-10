@@ -48,7 +48,7 @@ if True:
 # Example 2
 #
 
-if False:
+if True:
   selection = ['finland_2017','gavle_2021']
   example2 = Cases(selection=selection,printlev=0)
   example2.print(printlev=0)
@@ -74,4 +74,4 @@ if False:
 
   # Print the metadata for this case and run 
   print('\n--- metadata ---')
-  [print('    {:<20}: {}'.format(k,v)) for k,v in example2.cases[case].runs[run].__dict__.items() if k is not 'data']
+  [print('    {:<20}: {}'.format(k,v)) for k,v in example2.cases[case].runs[run].__dict__.items() if k != 'data']
