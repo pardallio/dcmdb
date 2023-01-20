@@ -414,7 +414,7 @@ class Exp():
       signal = True
       for file_template in self.file_templates:
               tmp = {}
-              x,mk,replace_keys = self.check_template(part_path+file_template)
+              x,mk,replace_keys = self.check_template(os.path.join(part_path,file_template))
               for cc in content:
                  zz = re.findall(r""+x+'$',cc)
                  if len(zz) > 0:
