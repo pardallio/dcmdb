@@ -49,7 +49,7 @@ For a newly added case the data part has to be benerated running
 ```
 ./chase.py -scan -case MYCASE [ -exp MYEXP ]
 ```
-This will generate the file `cases/MYCASE/data.yaml` containing all dates and leadtimes (in seconds) for the given files. Default is to scan all experimetns within a case, give MYEXP to just updated a single run. Note that scanning ECFS may take some minutes. Don't forget to commit the new file to the repo after you've created or updated it.
+This will generate the file `cases/MYCASE/data.yaml` containing all dates and leadtimes (in seconds) for the given files. Default is to scan all experimetns within a case, give MYEXP to just updated a single run. Note that scanning ECFS may take some minutes. Don't forget to commit the new file to the repo after you've created or updated it. For now commits should be done directly to the master branch.
 
 ### The cases module
 
