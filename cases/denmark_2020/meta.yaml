@@ -1,0 +1,24 @@
+dk500_case: 
+
+  file_templates : ['fc%Y%m%d%H+%LLLgrib_sfxs','fc%Y%m%d%H+%LLLgrib_fp']
+
+  atos:
+     path_template : 'ec:/miag/harmonie/dk500_case/%Y/%m/%d/%H/'
+
+  domain : 
+     name : 'DK500'
+     resolution : 500
+     levels : 90
+
+dini20a_case:
+
+  file_templates : ['fc%Y%m%d%H+%LLLgrib_sfxs','fc%Y%m%d%H+%LLLgrib_fp']
+
+  atos:
+     path_template : 'ec:/miag/harmonie/dini20a_case/%Y/%m/%d/%H/'
+
+  domain : 
+     name : 'DINI20A'
+     resolution : 2000
+     levels : 90
+
