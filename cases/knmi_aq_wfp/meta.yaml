@@ -1,0 +1,34 @@
+cy46_aq_ref: 
+
+  file_templates : ['ICMSHAROM+%LLLL','ICMSHSELE+%LLLL.sfx', 'PFAROM+%LLLL.grb2']
+
+  atos:
+     path_template : 'ec:/nkac/harmonie/BL2_n0_2500m/%Y%m%d/%H/'
+     path_template : 'ec:/nkac/harmonie/BL2_n1_1300m/%Y%m%d/%H/'
+     path_template : 'ec:/nkac/harmonie/BL2_n2_750m/%Y%m%d/%H/' 
+     path_template : 'ec:/nkac/harmonie/BL19_n0_2500m/%Y%m%d/%H/'
+     path_template : 'ec:/nkac/harmonie/BL19_n1_1300m/%Y%m%d/%H/'
+     path_template : 'ec:/nkac/harmonie/BL19_n2_750m/%Y%m%d/%H/'
+
+  domain : 
+     name : 'NETHERLANDS'
+     resolution : 2500,1300,750
+     levels : 90
+
+cy46_wfp_ref: 
+
+  file_templates : ['ICMSHAROM+%LLLL','ICMSHAROM+%LLLL.sfx', 'PFAROM+%LLLL.grb2']
+
+  atos:
+     path_template : 'ec:/nkac/harmonie/NL25_Eunice_n0/%Y%m%d/%H/'
+     path_template : 'ec:/nkac/harmonie/NL13_Eunice_n1/%Y%m%d/%H/'
+     path_template : 'ec:/nkac/harmonie/NL750_Eunice_n2/%Y%m%d/%H/'
+     path_template : 'ec:/nkac/harmonie/NL25_Eunice_n0_NOWFP/%Y%m%d/%H/'
+     path_template : 'ec:/nkac/harmonie/NL13_Eunice_n1_NOWFP/%Y%m%d/%H/'
+     path_template : 'ec:/nkac/harmonie/NL750_Eunice_n2_NOWFP/%Y%m%d/%H/'
+
+  domain : 
+     name : 'NETHERLANDS'
+     resolution : 2500,1300,750
+     levels : 90
+
