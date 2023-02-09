@@ -1,0 +1,12 @@
+cy46_faroe500:
+
+  file_templates : ['fc%Y%m%d%H+%LLLgrib_sfxs','fc%Y%m%d%H+%LLLgrib2_fp']
+
+  atos:
+     path_template : 'ec:/nhac/harmonie/cy46_faroe500/%Y/%m/%d/%H/'
+
+  domain :
+     name : 'FAROE500'
+     resolution : 500
+     levels : 90
+
