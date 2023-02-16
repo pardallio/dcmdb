@@ -1,12 +1,23 @@
-mcp43h2_prod: 
+deode_cy46ref:
 
   file_templates : ['fc%Y%m%d%H+%LLLgrib_sfxs','fc%Y%m%d%H+%LLLgrib2_fp']
 
   atos:
-     path_template : 'ec:/snh/harmonie/mcp43h2_prod/%Y/%m/%d/%H/mbr000/'
+     path_template : 'ectmp:/smb/harmonie/deode_cy46ref/%Y/%m/%d/%H/'
 
   domain : 
      name : 'METCOOP25D'
      resolution : 2500
      levels : 65
 
+deode_cy46750:
+
+  file_templates : ['fc%Y%m%d%H+%LLLgrib_sfxs','fc%Y%m%d%H+%LLLgrib2_fp']
+
+  atos:
+     path_template : 'ectmp:/smb/harmonie/deode_cy46750/%Y/%m/%m/%H/'
+
+  domain : 
+     name : 'SOMETHING'
+     resolution : 750
+     levels : 65
