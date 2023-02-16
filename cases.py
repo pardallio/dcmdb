@@ -118,6 +118,7 @@ class Cases:
         else:
           self.cases.print(self.printlev)
 
+#########################################################################
     def reconstruct(self,dtg=None,leadtime=None,file_template=None):
     
         res =[]
@@ -129,7 +130,25 @@ class Cases:
 
         return res
 #########################################################################
-#class Case(Cases):
+    def get(self,files=[],outpath='.'):
+    
+        for f in files:
+          if re.match('^ec',f):
+            ecfs_copy(f,outpath)
+          else: 
+            sys.exit()
+#########################################################################
+    def transfer(self,files=[],outpath='.',remote=None):
+    
+        self.get(files,outpath)
+        cmd='ssh {} "mkdir -p {}"'.format(remote['host'],remote['outpath'])
+        print(cmd)
+        os.system(cmd)
+        for filename in files:
+            cmd='scp {}/{} {}:{}/'.format(outpath,os.path.basename(filename),remote['host'],remote['outpath'])
+            print(cmd)
+            os.system(cmd)
+#########################################################################
 class Case():
 
     def __init__(self, host, path, printlev, props, case):
@@ -197,7 +216,7 @@ class Case():
               print("  no data found for",self.names)
 
         self.dump() 
-
+#########################################################################
     def dump(self):
           filename= self.path+'/'+self.case+'/data.yaml'
           with open(filename,"w") as outfile:
@@ -205,6 +224,7 @@ class Case():
               json.dump(self.data,outfile,indent=1)
               outfile.close()
 
+#########################################################################
     def reconstruct(self,dtg=None,leadtime=None,file_template=None):
         res = []
         if isinstance(self.runs,dict):
@@ -214,7 +234,6 @@ class Case():
            res.extend(self.runs.reconstruct(dtg,leadtime,file_template))
         return res
 #########################################################################
-#class Exp(Case):
 class Exp():
 
     def __init__(self, name, host, printlev, val, data):
@@ -266,6 +285,7 @@ class Exp():
     
       return y,mk,replace_keys
 
+##############################################################################
 #########################################################################
     def reconstruct(self,dtg=None,leadtime=None,file_template=None):
 
@@ -364,6 +384,8 @@ class Exp():
             if self.printlev > 1:
                 example = self.reconstruct(dates[0],content[dates[0]][-1]/3600,fname)
                 print('    Example:',example)
+                if re.match('^ec',example[0]):
+                    os.system('els -l {}'.format(example[0]))
 
 #########################################################################
     def scan(self):
@@ -458,6 +480,49 @@ def ecfs_scan(path):
  # Decode and filter output
  res = [line.decode("utf-8") for line in cmd_out.splitlines()]
  return res
+
+#########################################################################
+def ecfs_copy(infile,outfile):
+
+ args = ['ecp','-o',infile,outfile]
+ print(' '.join(args))
+ cmd = subprocess.Popen(args, stdout=subprocess.PIPE)
+ cmd_out, cmd_err = cmd.communicate()
+
+ res = [line.decode("utf-8") for line in cmd_out.splitlines()]
+
+#########################################################################
+def hub(p,dtgs,leadtime=None):
+
+        dtg = datetime.strptime(dtgs,'%Y-%m-%d %H:%M:%S')
+
+
+        re_map = { '%Y': '{:04d}'.format(dtg.year),
+                   '%m': '{:02d}'.format(dtg.month),
+                   '%d': '{:02d}'.format(dtg.day),
+                   '%H': '{:02d}'.format(dtg.hour),
+                   '%M': '{:02d}'.format(dtg.minute),
+                   '%S': '{:02d}'.format(dtg.second),
+                 }
+
+        if leadtime is not None :   
+           if isinstance(leadtime,str):
+             l = int(leadtime)/3600
+           elif isinstance(leadtime,float):
+             l = int(leadtime)/3600
+           elif isinstance(leadtime,int):
+             l = leadtime/3600
+           else:
+             sys.exit()
+           re_map['%LLLL']= '{:04d}'.format(int(l))
+           re_map['%LLL']= '{:03d}'.format(int(l))
+
+
+        path = p
+        for k,v in re_map.items():
+            path = path.replace(k,str(v))
+ 
+        return path
 
 #########################################################################
 def find_files(path,prefix=''):
