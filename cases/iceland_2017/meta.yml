@@ -1,0 +1,12 @@
+iceland_XXX: 
+# Need to check
+
+  file_templates : ['fc%Y%m%d%H+%LLLgrib','fc%Y%m%d%H+%LLLgrib_sfxs','fc%Y%m%d%H+%LLLgrib_fp']
+
+  atos:
+     path_template : 'ec:/icd/harmonie/iceland_XXX/%Y/%m/%d/%H/'
+
+  domain : 
+     name : 'Iceland'
+     resolution : 2500
+     levels : 65
