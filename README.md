@@ -24,12 +24,12 @@ mcp43h2_prod:
 
 where 
  * the top level is the experiment name or similar
- * `file_templates` describes the files of interest. Note that date/time information is parameterized using standard linux/python notation.
+ * `file_templates` describes the files of interest. Note that date/time information is parameterized using standard linux/python notation. Note that we are mainly interested in the GRIB files here, so list those.
  * `atos` here tells us where the data is located. For the future we could consider lumi and other hosts as well
  * `path_template` the search path for the data, note that ECFS notation is supported.
  * `domain` gives some information about the domain used. Could contain geometry information as well.
 
-In each `meta.yaml` file we may specify an arbitrary number of experiments/runs.
+In each `meta.yaml` file we may specify an arbitrary number of experiments/runs. Please repeat the above mentioned for each run.
 
 ## The python support
 
