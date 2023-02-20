@@ -2,7 +2,7 @@
 
 ## Introduction
 
-`dcmbd` is an attempt to bring some order in the output from the case stuides performed within DE_330. The initial cases will be done with different setup using different name conventions and the idea is to handle these differences in an organized manner. The meta database consists of metadata for individual cases along with data availibility information. The aim is to allow an easy access to data without having to worry to much about the location. 
+`dcmbd` is an attempt to bring some order in the output from the case studies performed within DE_330. The initial cases will be done with different setup using different name conventions and the idea is to handle these differences in an organized manner. The meta database consists of metadata for individual cases along with data availibility information. The aim is to allow an easy access to data without having to worry to much about the location. 
 
 ## The metadata
 
@@ -49,7 +49,13 @@ For a newly added case the data part has to be benerated running
 ```
 ./chase.py -scan -case MYCASE [ -exp MYEXP ]
 ```
-This will generate the file `cases/MYCASE/data.yaml` containing all dates and leadtimes (in seconds) for the given files. Default is to scan all experimetns within a case, give MYEXP to just updated a single run. Note that scanning ECFS may take some minutes. Don't forget to commit the new file to the repo after you've created or updated it. For now commits should be done directly to the master branch.
+This will generate the file `cases/MYCASE/data.yaml` containing all dates and leadtimes (in seconds) for the given files. Default is to scan all experiments within a case, give MYEXP to just updated a single run. Note that scanning ECFS may take some minutes. Check the result by
+
+```
+./chase.py -list -case MYCASE [ -exp MYEXP ] -v -v 
+```
+
+Don't forget to commit the new file data.yaml to the repo after you've created or updated it. For now commits should be done directly to the master branch.
 
 ### The cases module
 
