@@ -1,0 +1,13 @@
+BL18_n1_1300m_red: 
+
+  file_templates : ['fc%Y%m%d%H+%LLLgrib_sfxs','fc%Y%m%d%H+%LLLgrib2_fp']
+
+  atos:
+     path_template : 'ec:harmonie/BL18_n1_1300m_red/%Y/%m/%d/%H/'
+
+  domain : 
+     name : 'NETHERLANDS'
+     resolution : 1300
+     levels : 90
+
+
