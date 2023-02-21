@@ -29,7 +29,7 @@ where
  * `path_template` the search path for the data, note that ECFS notation is supported.
  * `domain` gives some information about the domain used. Could contain geometry information as well.
 
-In each `meta.yaml` file we may specify an arbitrary number of experiments/runs. Please repeat the above mentioned for each run.
+In each `meta.yaml` file we may specify an arbitrary number of experiments/runs. Please repeat the above mentioned for each run. The data section, `data.yaml`, should be generated, not manually edited. Instructions for how the generation is done is found further down.
 
 ## The python support
 
