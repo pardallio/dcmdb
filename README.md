@@ -57,6 +57,7 @@ This will generate the file `cases/MYCASE/data.yaml` containing all dates and le
 ```
 Run without [ -exp MYEXP ] if you have stored multiple exp's in meta.yaml:
 
+```
 ./chase.py -scan -case MYCASE -v -v
 
 ```
