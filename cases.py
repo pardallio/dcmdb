@@ -374,15 +374,23 @@ class Exp():
             print('   File:',fname)
             if self.printlev < 2:
               print('    Dates:',dates[0],'-',dates[-1])
-              print('    Leadtimes:',int(content[dates[0]][0]/3600),'...',int(content[dates[0]][-1]/3600))
+              if content[dates[0]][0] is None:
+                print('    No leadtime information available')
+              else:
+                print('    Leadtimes:',int(content[dates[0]][0]/3600),'...',int(content[dates[0]][-1]/3600))
             elif self.printlev < 3:
-              for date,leadtimes in sorted(content.items()):
+              if content[dates[0]][0] is not None:
+               for date,leadtimes in sorted(content.items()):
                   print('   ',date,':',int(leadtimes[0]/3600),'...',int(leadtimes[-1]/3600))
             elif self.printlev > 2:
-              for date,leadtimes in sorted(content.items()):
+              if content[dates[0]][0] is not None:
+               for date,leadtimes in sorted(content.items()):
                   print('   ',date,':',[int(x/3600) for x in leadtimes])
             if self.printlev > 1:
-                example = self.reconstruct(dates[0],content[dates[0]][-1]/3600,fname)
+                if content[dates[0]][0] is None:
+                  example = self.reconstruct(dates[0],file_template=fname)
+                else: 
+                  example = self.reconstruct(dates[0],content[dates[0]][-1]/3600,fname)
                 print('    Example:',example)
                 if re.match('^ec',example[0]):
                     os.system('els -l {}'.format(example[0]))
