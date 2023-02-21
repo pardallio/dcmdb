@@ -1,0 +1,11 @@
+IANOS_43h221_de:
+
+  file_templates : ['fc%Y%m%d%H+%LLLgrib2','ICMSHHARM+0%LLL','ICMSHSELE+0%LLL.sfx']
+
+  atos:
+     path_template : 'ec:/mdk/harmonie/IANOS_43h221_de/%Y/%m/%d/%H/'
+
+  domain : 
+     name : 'IBERIAxl_2.5'
+     resolution : 2500
+     levels : 65
