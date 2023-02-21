@@ -3,7 +3,7 @@ NL25_Eunice_n0:
   file_templates : ['fc%Y%m%d%H+%LLLgrib_sfxs','fc%Y%m%d%H+%LLLgrib2_fp']
 
   atos:
-     path_template : 'ec:harmonie/NL25_Eunice_n0/%Y/%m/%d/%H/'
+     path_template : 'ec:/nkac/harmonie/NL25_Eunice_n0/%Y/%m/%d/%H/'
 
   domain : 
      name : 'NETHERLANDS'
@@ -15,7 +15,7 @@ NL13_Eunice_n1:
   file_templates : ['fc%Y%m%d%H+%LLLgrib_sfxs','fc%Y%m%d%H+%LLLgrib2_fp']
 
   atos:
-     path_template : 'ec:harmonie/NL13_Eunice_n1/%Y/%m/%d/%H/'
+     path_template : 'ec:/nkac/harmonie/NL13_Eunice_n1/%Y/%m/%d/%H/'
 
   domain : 
      name : 'NETHERLANDS'
@@ -27,7 +27,7 @@ NL750_Eunice_n2:
   file_templates : ['fc%Y%m%d%H+%LLLh%Mmgrib_sfxs','fc%Y%m%d%H+%LLLh%Mmgrib2_fp']
 
   atos:
-     path_template : 'ec:harmonie/NL750_Eunice_n2/%Y/%m/%d/%H/'
+     path_template : 'ec:/nkac/harmonie/NL750_Eunice_n2/%Y/%m/%d/%H/'
 
   domain : 
      name : 'NETHERLANDS'
@@ -39,7 +39,7 @@ NL25_Eunice_n0_NOWFP:
   file_templates : ['fc%Y%m%d%H+%LLLgrib_sfxs','fc%Y%m%d%H+%LLLgrib2_fp']
 
   atos:
-     path_template : 'ec:harmonie/NL25_Eunice_n0_NOWFP/%Y/%m/%d/%H/'
+     path_template : 'ec:/nkac/harmonie/NL25_Eunice_n0_NOWFP/%Y/%m/%d/%H/'
 
   domain : 
      name : 'NETHERLANDS'
@@ -51,7 +51,7 @@ NL13_Eunice_n1_NOWFP:
   file_templates : ['fc%Y%m%d%H+%LLLgrib_sfxs','fc%Y%m%d%H+%LLLgrib2_fp']
 
   atos:
-     path_template : 'ec:harmonie/NL13_Eunice_n1_NOWFP/%Y/%m/%d/%H/'
+     path_template : 'ec:/nkac/harmonie/NL13_Eunice_n1_NOWFP/%Y/%m/%d/%H/'
 
   domain : 
      name : 'NETHERLANDS'
@@ -62,7 +62,7 @@ NL750_Eunice_n2_NOWFP:
   file_templates : ['fc%Y%m%d%H+%LLLh%Mmgrib_sfxs','fc%Y%m%d%H+%LLLh%Mmgrib2_fp']
 
   atos:
-     path_template : 'ec:harmonie/NL750_Eunice_n2_NOWFP/%Y/%m/%d/%H/'
+     path_template : 'ec:/nkac/harmonie/NL750_Eunice_n2_NOWFP/%Y/%m/%d/%H/'
 
   domain : 
      name : 'NETHERLANDS'
