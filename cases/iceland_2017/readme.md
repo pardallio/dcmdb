@@ -1,5 +1,6 @@
 Introduction
 
-Data produced for the Iceland case from September 18-28 2017.
+Data produced for the Iceland case from 18-28 September 2017.
 
-The meta.yml and data.yml files not finished.
+meta.yml finished
+data.yml will be made when all data is in.
