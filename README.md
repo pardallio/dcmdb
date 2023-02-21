@@ -53,6 +53,13 @@ This will generate the file `cases/MYCASE/data.yaml` containing all dates and le
 
 ```
 ./chase.py -list -case MYCASE [ -exp MYEXP ] -v -v 
+
+```
+Run without [ -exp MYEXP ] if you have stored multiple exp's in meta.yaml:
+
+```
+./chase.py -scan -case MYCASE -v -v
+
 ```
 
 Don't forget to commit the new file data.yaml to the repo after you've created or updated it. For now commits should be done directly to the master branch.

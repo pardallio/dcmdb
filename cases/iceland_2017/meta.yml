@@ -1,12 +1,11 @@
-iceland_XXX: 
-# Need to check
+cy43_ref_iceland:
 
   file_templates : ['fc%Y%m%d%H+%LLLgrib','fc%Y%m%d%H+%LLLgrib_sfxs','fc%Y%m%d%H+%LLLgrib_fp']
 
   atos:
-     path_template : 'ec:/icd/harmonie/iceland_XXX/%Y/%m/%d/%H/'
+     path_template : 'ec:/icd/DEODE/cy43_ref_iceland/%Y/%m/%d/%H/'
 
   domain : 
-     name : 'Iceland'
+     name : 'ICELAND'
      resolution : 2500
      levels : 65

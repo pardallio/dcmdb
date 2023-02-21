@@ -1,0 +1,11 @@
+deode_ierain_ref: 
+
+  file_templates : ['fc%Y%m%d%H+%LLLgrib_sfxs','fc%Y%m%d%H+%LLLgrib2_fp']
+
+  atos:
+     path_template : 'ec:/duca/DEODE/deode_ierain_ref/%Y/%m/%d/%H/'
+
+  domain : 
+     name : 'IRELAND25_090'
+     resolution : 2500
+     levels : 65

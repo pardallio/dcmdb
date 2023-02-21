@@ -1,11 +1,13 @@
-BL19_n0_2500m_red: 
+BL18_n1_1300m_red: 
 
   file_templates : ['fc%Y%m%d%H+%LLLgrib_sfxs','fc%Y%m%d%H+%LLLgrib2_fp']
 
   atos:
-     path_template : 'ec:/nkac/harmonie/BL19_n0_2500m_red/%Y/%m/%d/%H/'
+     path_template : 'ec:harmonie/BL18_n1_1300m_red/%Y/%m/%d/%H/'
 
   domain : 
      name : 'NETHERLANDS'
-     resolution : 2500
+     resolution : 1300
      levels : 90
+
+
