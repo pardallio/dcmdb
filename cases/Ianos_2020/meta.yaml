@@ -1,6 +1,6 @@
 IANOS_43h221_de:
 
-  file_templates : ['fc%Y%m%d%H+%LLLgrib2','ICMSHHARM+0%LLL','ICMSHSELE+0%LLL.sfx']
+  file_templates : ['fc%Y%m%d%H+%LLLgrib2_fp','ICMSHHARM+0%LLL']
 
   atos:
      path_template : 'ec:/mdk/harmonie/IANOS_43h221_de/%Y/%m/%d/%H/'
