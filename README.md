@@ -11,7 +11,7 @@ For each case we suggest to create a directory under `cases`. Pick a name that i
 ``` yaml
 mcp43h2_prod: 
 
-  file_templates : ['fc%Y%m%d%H+%LLLgrib_sfxs','fc%Y%m%d%H+%LLLgrib2_fp']
+  file_templates : ['fc%Y%m%d%H+%LLLgrib_sfxs','fc%Y%m%d%H+%LLLh%LMmgrib2_fp','PFDEODE+%LLLL:%LM:00']
 
   atos:
      path_template : 'ec:/snh/harmonie/mcp43h2_prod/%Y/%m/%d/%H/mbr000/'
@@ -29,6 +29,12 @@ where
  * `path_template` the search path for the data, note that ECFS notation is supported.
  * `domain` gives some information about the domain used. Could contain geometry information as well.
 
+The available wild cards are used above are 
+ * %Y,%m,%d,%H,%M,%S for year, month, day, hour, minute, second respectively
+ * %LLL, %LLLL for forecast legth in hours (3,4) length
+ * %LM for forecast length in minutes in combination with hours
+ * %* any character
+ 
 In each `meta.yaml` file we may specify an arbitrary number of experiments/runs. Please repeat the above mentioned for each run. The data section, `data.yaml`, should be generated, not manually edited. Instructions for how the generation is done is found further down.
 
 ## The python support
