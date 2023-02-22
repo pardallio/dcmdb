@@ -24,7 +24,7 @@ NL13_Eunice_n1:
 
 NL750_Eunice_n2: 
 
-  file_templates : ['fc%Y%m%d%H+%LLLh%Mmgrib_sfxs','fc%Y%m%d%H+%LLLh%Mmgrib2_fp']
+  file_templates : ['fc%Y%m%d%H+%LLLh%LMmgrib_sfxs','fc%Y%m%d%H+%LLLh%LMmgrib2_fp']
 
   atos:
      path_template : 'ec:/nkac/harmonie/NL750_Eunice_n2/%Y/%m/%d/%H/'
@@ -59,7 +59,7 @@ NL13_Eunice_n1_NOWFP:
      levels : 90
 
 NL750_Eunice_n2_NOWFP: 
-  file_templates : ['fc%Y%m%d%H+%LLLh%Mmgrib_sfxs','fc%Y%m%d%H+%LLLh%Mmgrib2_fp']
+  file_templates : ['fc%Y%m%d%H+%LLLh%LMmgrib_sfxs','fc%Y%m%d%H+%LLLh%LMmgrib2_fp']
 
   atos:
      path_template : 'ec:/nkac/harmonie/NL750_Eunice_n2_NOWFP/%Y/%m/%d/%H/'

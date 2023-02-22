@@ -38,6 +38,7 @@ class Cases:
             sys.exit()
 
 #########################################################################
+
     def get_hostname(self):
 
         import socket
@@ -255,8 +256,9 @@ class Exp():
                      '%d': 2,    # Day
                      '%H': 2,    # Hour
                      '%M': 2,    # Minute
-                     '%LLLL': 4, # Leadtime
-                     '%LLL': 3,  # Leadtime
+                     '%LLLL': 4, # Leadtime in hours
+                     '%LLL': 3,  # Leadtime in hours
+                     '%LM': 2,   # Leadtime in minutes
                      '*': 0,     # Wildcard
                    }
 
@@ -305,15 +307,7 @@ class Exp():
         def sub(p,dtgs,leadtime):
 
            dtg = datetime.strptime(dtgs,'%Y-%m-%d %H:%M:%S')
-           if isinstance(leadtime,str):
-             l = int(leadtime)/3600
-           elif isinstance(leadtime,float):
-             l = int(leadtime)/3600
-           elif isinstance(leadtime,int):
-             l = leadtime/3600
-           else:
-             sys.exit()
-
+           lh,lm = leadtime2hm(leadtime)
            path = p
 
            re_map = { '%Y': '{:04d}'.format(dtg.year),
@@ -322,8 +316,9 @@ class Exp():
                    '%H': '{:02d}'.format(dtg.hour),
                    '%M': '{:02d}'.format(dtg.minute),
                    '%S': '{:02d}'.format(dtg.second),
-                   '%LLLL': '{:04d}'.format(int(l)),
-                   '%LLL': '{:03d}'.format(int(l)),
+                   '%LLLL': '{:04d}'.format(lh),
+                   '%LLL': '{:03d}'.format(lh),
+                   '%LM': '{:02d}'.format(int(lm)),
                  }
            for k,v in re_map.items():
              path = path.replace(k,str(v))
@@ -351,9 +346,9 @@ class Exp():
                leadtimes = self.data[file][ddd]
              else:
                if isinstance(leadtime,list):
-                 leadtimes = [x*3600 for x in leadtime]
+                 leadtimes = [x for x in leadtime]
                else:
-                 leadtimes = [3600*leadtime]
+                 leadtimes = [leadtime]
 
              result.extend([sub(self.path_template+file,ddd,l) for l in leadtimes if l in self.data[file][ddd]])
 
@@ -377,20 +372,37 @@ class Exp():
               if content[dates[0]][0] is None:
                 print('    No leadtime information available')
               else:
-                print('    Leadtimes:',int(content[dates[0]][0]/3600),'...',int(content[dates[0]][-1]/3600))
+                lhs,lms = leadtime2hm(content[dates[0]][0])
+                lhe,lme = leadtime2hm(content[dates[0]][-1])
+                print('    Leadtimes:{:02d}h{:02d}m - {:02d}h{:02d}m'.format(lhs,lms,lhe,lme))
             elif self.printlev < 3:
               if content[dates[0]][0] is not None:
                for date,leadtimes in sorted(content.items()):
-                  print('   ',date,':',int(leadtimes[0]/3600),'...',int(leadtimes[-1]/3600))
+                  lhs,lms = leadtime2hm(leadtimes[0])
+                  lhe,lme = leadtime2hm(leadtimes[-1])
+                  print('    {} : {:02d}h{:02d}m - {:02d}h{:02d}m'.format(date,lhs,lms,lhe,lme))
             elif self.printlev > 2:
               if content[dates[0]][0] is not None:
                for date,leadtimes in sorted(content.items()):
-                  print('   ',date,':',[int(x/3600) for x in leadtimes])
+                  print('   ',date,':')
+                  x = leadtimes[0]
+                  fh,lm = leadtime2hm(x)
+                  txt = '       {:02d}h : {:02d}'.format(fh,lm)
+                  for x in leadtimes[1:]:
+                     lh,lm = leadtime2hm(x)
+                     if lh == fh :
+                       txt += ',{:02d}'.format(lm)
+                     else:
+                       print(txt+'m')
+                       txt = '       {:02d}h : {:02d}'.format(lh,lm)
+                       fh = lh
+
             if self.printlev > 1:
+
                 if content[dates[0]][0] is None:
                   example = self.reconstruct(dates[0],file_template=fname)
                 else: 
-                  example = self.reconstruct(dates[0],content[dates[0]][-1]/3600,fname)
+                  example = self.reconstruct(dates[0],content[dates[0]][-1],fname)
                 print('    Example:',example)
                 if re.match('^ec',example[0]):
                     os.system('els -l {}'.format(example[0]))
@@ -466,6 +478,8 @@ class Exp():
       list_keys = ('%Y','%m','%d','%H','%M','%S')
       res = ['0']*6
     
+      mk_list = list(mk)
+      mk_len = len(mk_list)
       for j,l in enumerate(list_keys):
           for i,k in enumerate(mk): 
               if l == k :
@@ -473,10 +487,20 @@ class Exp():
       dtg = datetime.strptime(':'.join(res),'%Y:%m:%d:%H:%M:%S')
     
       leadtime = None
+      times = []
+      lh = None
+      lm = None
       for k in mk:
           if k in ('%LLLL','%LLL'):
-                   leadtime = 3600*int(z[-1])
+                   i = mk_list.index(k) - mk_len
+                   times.append(3600*int(z[i]))
+          if k == '%LM':
+                   i = mk_list.index(k) - mk_len
+                   times.append(60*int(z[i]))
     
+      if len(times) > 0 :
+          leadtime = sum(times)
+
       return str(dtg),leadtime             
     
 #########################################################################
@@ -504,7 +528,6 @@ def hub(p,dtgs,leadtime=None):
 
         dtg = datetime.strptime(dtgs,'%Y-%m-%d %H:%M:%S')
 
-
         re_map = { '%Y': '{:04d}'.format(dtg.year),
                    '%m': '{:02d}'.format(dtg.month),
                    '%d': '{:02d}'.format(dtg.day),
@@ -514,22 +537,17 @@ def hub(p,dtgs,leadtime=None):
                  }
 
         if leadtime is not None :   
-           if isinstance(leadtime,str):
-             l = int(leadtime)/3600
-           elif isinstance(leadtime,float):
-             l = int(leadtime)/3600
-           elif isinstance(leadtime,int):
-             l = leadtime/3600
-           else:
-             sys.exit()
-           re_map['%LLLL']= '{:04d}'.format(int(l))
-           re_map['%LLL']= '{:03d}'.format(int(l))
+           lh,lm = leadtime2hm(leadtime)
 
+           re_map['%LLLL']= '{:04d}'.format(lh)
+           re_map['%LLL']= '{:03d}'.format(lh)
+           re_map['%LM']= '{:02d}'.format((lm))
 
         path = p
         for k,v in re_map.items():
             path = path.replace(k,str(v))
  
+        print(p,path)
         return path
 
 #########################################################################
@@ -550,3 +568,20 @@ def find_files(path,prefix=''):
           subresult = [entry.name + "/" + e for e in subresult]
           result.extend(subresult)
   return result
+#########################################################################
+def leadtime2hm(leadtime):
+
+       if isinstance(leadtime,str):
+         lh = int(leadtime / 3600)
+         lm = int(leadtime) % 3600 / 60
+       elif isinstance(leadtime,float):
+         lh = int(leadtime / 3600)
+         lm = int(leadtime) % 3600 / 60
+       elif isinstance(leadtime,int):
+         lh = int(leadtime / 3600)
+         lm = leadtime % 3600 / 60
+       else:
+         sys.exit()
+
+       return lh,int(lm)
+
