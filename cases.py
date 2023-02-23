@@ -204,7 +204,6 @@ class Case():
         if isinstance(self.runs,dict):
           for name,exp in self.runs.items():
             result, signal = exp.scan()
-            print(signal)
             if signal:
               self.data[self.host][name] = result
             else:
@@ -215,6 +214,11 @@ class Case():
               self.data[self.host][self.names[0]] = result
             else:
               print("  no data found for",self.names)
+
+        # Print a summary
+        if self.printlev > 0 :
+         print(" Scan result:")
+         self.print()
 
         self.dump() 
 #########################################################################
@@ -258,6 +262,7 @@ class Exp():
                      '%M': 2,    # Minute
                      '%LLLL': 4, # Leadtime in hours
                      '%LLL': 3,  # Leadtime in hours
+                     '%LL': 2,   # Leadtime in hours
                      '%LM': 2,   # Leadtime in minutes
                      '*': 0,     # Wildcard
                    }
@@ -318,6 +323,7 @@ class Exp():
                    '%S': '{:02d}'.format(dtg.second),
                    '%LLLL': '{:04d}'.format(lh),
                    '%LLL': '{:03d}'.format(lh),
+                   '%LL': '{:02d}'.format(lh),
                    '%LM': '{:02d}'.format(int(lm)),
                  }
            for k,v in re_map.items():
@@ -350,7 +356,7 @@ class Exp():
                else:
                  leadtimes = [leadtime]
 
-             result.extend([sub(self.path_template+file,ddd,l) for l in leadtimes if l in self.data[file][ddd]])
+             result.extend([sub(f"{self.path_template}/{file}",ddd,l) for l in leadtimes if l in self.data[file][ddd]])
 
         return result
 
@@ -381,6 +387,9 @@ class Exp():
                   lhs,lms = leadtime2hm(leadtimes[0])
                   lhe,lme = leadtime2hm(leadtimes[-1])
                   print('    {} : {:02d}h{:02d}m - {:02d}h{:02d}m'.format(date,lhs,lms,lhe,lme))
+              else:
+                  for date in sorted(dates):
+                      print('    ',date)
             elif self.printlev > 2:
               if content[dates[0]][0] is not None:
                for date,leadtimes in sorted(content.items()):
@@ -396,6 +405,7 @@ class Exp():
                        print(txt+'m')
                        txt = '       {:02d}h : {:02d}'.format(lh,lm)
                        fh = lh
+                  print(txt+'m')
 
             if self.printlev > 1:
 
@@ -491,7 +501,7 @@ class Exp():
       lh = None
       lm = None
       for k in mk:
-          if k in ('%LLLL','%LLL'):
+          if k in ('%LLLL','%LLL','%LL'):
                    i = mk_list.index(k) - mk_len
                    times.append(3600*int(z[i]))
           if k == '%LM':
@@ -539,9 +549,10 @@ def hub(p,dtgs,leadtime=None):
         if leadtime is not None :   
            lh,lm = leadtime2hm(leadtime)
 
-           re_map['%LLLL']= '{:04d}'.format(lh)
-           re_map['%LLL']= '{:03d}'.format(lh)
-           re_map['%LM']= '{:02d}'.format((lm))
+           re_map['%LLLL'] = '{:04d}'.format(lh)
+           re_map['%LLL'] = '{:03d}'.format(lh)
+           re_map['%LL'] = '{:02d}'.format(lh)
+           re_map['%LM'] = '{:02d}'.format((lm))
 
         path = p
         for k,v in re_map.items():

@@ -1,0 +1,23 @@
+NEWREF:
+
+  file_templates : ['ALAD_NEWREF_%Y%m%d%H.tar']
+
+  atos:
+     path_template : 'ec:/cza/deode/NEWREF/'
+
+  domain : 
+     name : 
+     resolution : 
+     levels :
+
+OLDREF:
+
+  file_templates : ['ALAD_OLDREF_%Y%m%d%H.tar']
+
+  atos:
+     path_template : 'ec:/cza/deode/OLDREF/'
+
+  domain : 
+     name : 
+     resolution : 
+     levels :

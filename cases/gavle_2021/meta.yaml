@@ -3,7 +3,7 @@ deode_cy46ref:
   file_templates : ['fc%Y%m%d%H+%LLLgrib_sfxs','fc%Y%m%d%H+%LLLgrib2_fp']
 
   atos:
-     path_template : 'ectmp:/smb/harmonie/deode_cy46ref/%Y/%m/%d/%H/'
+     path_template : 'ec:/smb/harmonie/deode_cy46ref/%Y/%m/%d/%H/'
 
   domain : 
      name : 'METCOOP25D'
@@ -15,7 +15,7 @@ deode_cy46750:
   file_templates : ['fc%Y%m%d%H+%LLLgrib_sfxs','fc%Y%m%d%H+%LLLgrib2_fp']
 
   atos:
-     path_template : 'ectmp:/smb/harmonie/deode_cy46750/%Y/%m/%m/%H/'
+     path_template : 'ec:/smb/harmonie/deode_cy46750/%Y/%m/%d/%H/'
 
   domain : 
      name : 'SOMETHING'

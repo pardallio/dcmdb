@@ -1,0 +1,11 @@
+HYDRO:
+
+  file_templates : ['%Y-%m-%d_%H.tar']
+
+  atos:
+     path_template : '/perm/sk9/deode/HYDRO/reference_run/'
+
+  domain : 
+     name :
+     resolution :
+     levels :
