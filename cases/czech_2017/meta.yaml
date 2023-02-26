@@ -6,9 +6,10 @@ NEWREF:
      path_template : 'ec:/cza/deode/NEWREF/'
 
   domain : 
-     name : 
-     resolution : 
-     levels :
+     name : 'CZ1K'
+     resolution : 1000m
+     native_resolution : 2325m
+     levels : 87
 
 OLDREF:
 
@@ -18,6 +19,7 @@ OLDREF:
      path_template : 'ec:/cza/deode/OLDREF/'
 
   domain : 
-     name : 
-     resolution : 
-     levels :
+     name : 'CZ1K'
+     resolution : 1000m
+     native_resolution : 4710m
+     levels : 87
