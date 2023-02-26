@@ -30,7 +30,13 @@ class Cases:
         else:
           self.names = names
 
-        self.cases,self.names = self.load_cases()
+        self.cases,self.names,self.meta = self.load_cases()
+
+        self.domains= {}
+        for k,v in self.meta.items():
+            self.domains[k] = {}
+            for x,y in v.items():
+             self.domains[k][x] = y['domain']
 
         if len(self.names) == 0:
             print("No cases found")
@@ -73,9 +79,10 @@ class Cases:
                 print('\nCould not find cases:',missing,'\n')
 
         if len(case_list) == 0 :
-          return {},[]
+          return {},[],{}
     
         res = {}
+        mm = {}
         for x in case_list :
             p ='{}/{}/{}'.format(self.path,x,meta_file)
             meta = yaml.safe_load(open(p))
@@ -86,14 +93,15 @@ class Cases:
                 print('\nCould not find exp:',missing,'\n')
               meta = {k:v for k,v in meta.items() if k in exp_list}
 
+            mm[x] = meta
             res[x] = Case(self.host, self.path, self.printlev, meta, x)
     
         if self.printlev > 0:
           print("Loaded:",case_list)
         if len(res) > 1 :
-          return res,case_list
+          return res,case_list,mm
         else:
-          return res[x],case_list
+          return res[x],case_list,mm
 
 #########################################################################
     def show(self):
@@ -141,14 +149,16 @@ class Cases:
 #########################################################################
     def transfer(self,files=[],outpath='.',remote=None):
     
+        os.makedirs(outpath,exist_ok=True)
         self.get(files,outpath)
         cmd='ssh {} "mkdir -p {}"'.format(remote['host'],remote['outpath'])
         print(cmd)
         os.system(cmd)
-        for filename in files:
-            cmd='scp {}/{} {}:{}/'.format(outpath,os.path.basename(filename),remote['host'],remote['outpath'])
-            print(cmd)
-            os.system(cmd)
+        rhost = remote['host']
+        rpath = remote['outpath']
+        cmd=f'rsync -vaux {outpath}/ {rhost}:{rpath}/'
+        print(cmd)
+        os.system(cmd)
 #########################################################################
 class Case():
 
@@ -526,7 +536,7 @@ def ecfs_scan(path):
 #########################################################################
 def ecfs_copy(infile,outfile):
 
- args = ['ecp','-o',infile,outfile]
+ args = ['ecp',infile,outfile]
  print(' '.join(args))
  cmd = subprocess.Popen(args, stdout=subprocess.PIPE)
  cmd_out, cmd_err = cmd.communicate()
