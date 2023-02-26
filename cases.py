@@ -270,11 +270,11 @@ class Exp():
                      '%d': 2,    # Day
                      '%H': 2,    # Hour
                      '%M': 2,    # Minute
+                     '*': 0,     # Wildcard
+                     '%LM': 2,   # Leadtime in minutes
                      '%LLLL': 4, # Leadtime in hours
                      '%LLL': 3,  # Leadtime in hours
                      '%LL': 2,   # Leadtime in hours
-                     '%LM': 2,   # Leadtime in minutes
-                     '*': 0,     # Wildcard
                    }
 
       mapped_keys = {}
@@ -295,6 +295,8 @@ class Exp():
          if len(mm) > 0:
              mapped_keys[k]= mm[0]
              replace_keys[k]= s
+             if k in ['%LLLL','%LLL','%LL'] :
+                 break
     
       mk = dict(sorted(mapped_keys.items(), key=lambda item: item[1]))
     
@@ -425,6 +427,8 @@ class Exp():
                   example = self.reconstruct(dates[0],content[dates[0]][-1],fname)
                 print('    Example:',example)
                 if re.match('^ec',example[0]):
+                    if self.printlev > 2:
+                        print("Checking",example[0])
                     os.system('els -l {}'.format(example[0]))
 
 #########################################################################
