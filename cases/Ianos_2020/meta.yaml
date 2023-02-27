@@ -6,6 +6,19 @@ IANOS_43h221_de:
      path_template : 'ec:/mdk/harmonie/IANOS_43h221_de/%Y/%m/%d/%H/'
 
   domain : 
-     name : 'IBERIAxl_2.5'
+     name : 'IANOS_2.5'
      resolution : 2500
      levels : 65
+
+IANOS500m_de:
+  file_templates : ['fc%Y%m%d%H+%LLLgrib_sfxs','fc%Y%m%d%H+%LLLgrib2_fp','ICMSHHARM+0%LLL']
+
+  atos:
+     path_template : 'ec:/mdk/harmonie/IANOS500m_de/%Y/%m/%d/%H/'
+
+  domain :
+     name : 'IANOS_0.5'
+     resolution : 500
+     levels : 65
+
+     
