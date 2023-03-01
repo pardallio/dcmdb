@@ -8,5 +8,5 @@ cy46_faroe500:
   domain :
      name : 'FAROE500'
      resolution : 500
-     levels : 90
+     levels : 65
 
