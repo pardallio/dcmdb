@@ -1,1 +1,18 @@
+AUDE2018:
 
+ file_templates : [‘historic.arome.aude_500-500m000+%LLLL_%LM.grib’,’grid.arome-forecast.aude0005+%LLLL_%LM.grib’]
+
+
+ atos:
+
+
+ path_template : 'ec:/rm6/AUDE2018/%Y/%m/%d/%H/'
+
+
+domain :
+
+    name : 'AUDE'
+
+    resolution : 500
+
+    levels : 120
