@@ -128,6 +128,19 @@ class Cases:
           self.cases.print(self.printlev)
 
 #########################################################################
+    def toc(self,printlev=None):
+
+        if printlev is not None:
+            self.printlev = printlev
+
+        if isinstance(self.cases,dict):
+         for name,case in self.cases.items():
+          print('\nCase:',name)
+          case.toc(self.printlev)
+        else:
+          self.cases.toc(self.printlev)
+
+#########################################################################
     def reconstruct(self,dtg=None,leadtime=None,file_template=None):
     
         res =[]
@@ -143,7 +156,7 @@ class Cases:
     
         for f in files:
           if re.match('^ec',f):
-            ecfs_copy(f,outpath)
+            ecfs_copy(f,outpath,self.printlev)
           else: 
             sys.exit()
 #########################################################################
@@ -175,15 +188,16 @@ class Case():
           if host in val:
            if exp not in self.data[host]:
               self.data[host][exp] = {}
-           self.runs[exp]= Exp(case, exp, host, printlev, val, self.data[host][exp])
+           self.runs[exp]= Exp(path,case, exp, host, printlev, val, self.data[host][exp])
         else:
          for exp,val in props.items():
           if host in val:
            if exp not in self.data[host]:
               self.data[host][exp] = {}
-           self.runs= Exp(case, exp, host, printlev, val, self.data[host][exp])
+           self.runs= Exp(path,case, exp, host, printlev, val, self.data[host][exp])
         self.names= [x for x in props]
-          
+
+##############################################################################
     def print(self,printlev=None):
         if printlev is not None:
             self.printlev = printlev
@@ -198,6 +212,18 @@ class Case():
         else:
            self.runs.print(self.printlev)
 
+##############################################################################
+    def toc(self,printlev=None):
+        if printlev is not None:
+            self.printlev = printlev
+
+        if isinstance(self.runs,dict):
+          for run,exp in self.runs.items():
+           exp.toc(self.printlev)
+        else:
+           self.runs.toc(self.printlev)
+
+##############################################################################
     def load(self):
         filename= self.path+'/'+self.case+'/data.json'
         if os.path.isfile(filename):
@@ -251,8 +277,9 @@ class Case():
 #########################################################################
 class Exp():
 
-    def __init__(self, case, name, host, printlev, val, data):
+    def __init__(self, path, case, name, host, printlev, val, data):
 
+        self.path = path
         self.case = case
         self.name = name
         self.host = host
@@ -305,7 +332,6 @@ class Exp():
     
       return y,mk,replace_keys
 
-##############################################################################
 #########################################################################
     def reconstruct(self,dtg=None,leadtime=None,file_template=None):
 
@@ -446,6 +472,82 @@ class Exp():
                            print('ERROR:Problem listing', self.case,':',self.name,tmp)
 
 #########################################################################
+    def build_toc(self,file_template,file_to_scan):
+
+        isgrib,issfx,grib_version = self.check_file_type(file_template)
+        if isgrib:
+          if issfx and grib_version == 1:
+              parameters='indicatorOfParameter,level,typeOfLevel,timeRangeIndicator'
+          elif grib_version == 1:
+              parameters='indicatorOfParameter,level,typeOfLevel,timeRangeIndicator,shortName'
+          elif grib_version == 2:
+              parameters='discipline,parameterCategory,parameterNumber,level,typeOfLevel,stepType,shortName'
+
+          if self.printlev > 2:
+             print("Scanning",file_to_scan)
+
+          if re.match('^ec',file_to_scan):
+             outfile=f"{os.environ['SCRATCH']}/{os.path.basename(file_to_scan)}"
+             ecfs_copy(file_to_scan,outfile,self.printlev)
+          else:
+             outfile = file_to_scan
+          json_filename = f"{self.path}/{self.case}/{self.name}_{file_template}.json"
+          os.system(f"grib_ls -p {parameters} -j {outfile} > {json_filename}")
+          print(f" create TOC for {file_template} as {json_filename}")
+          if re.match('^ec',file_to_scan):
+            os.remove(outfile)
+
+#########################################################################
+    def check_file_type(self,infile):
+
+        isgrib=True
+        issfx=False
+        grib_version=-1
+
+        try:
+          cmd = subprocess.Popen(['codes_info','-d'], stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+        except FileNotFoundError:
+          print(" could not find codes_info, have you loaded a module for eccodes?")
+          sys.exit()
+        cmd_out, cmd_err = cmd.communicate()
+        edp=cmd_out.decode("utf-8")
+
+        if 'ICMSH' in infile:
+            isgrib=False
+        elif 'sfx' in infile:
+            issfx=True
+            grib_version=1
+        elif 'grib2' in infile:
+            grib_version=2
+            os.environ['ECCODES_DEFINITION_PATH'] = f"{os.getcwd()}/eccodes/definitions:{edp}"
+            if self.printlev > 1 :
+                print(f" Update ECCODES_DEFINITION_PATH:{os.environ['ECCODES_DEFINITION_PATH']}")
+        elif 'grib' in infile:
+            grib_version=1
+        elif 'GRIBPF' in infile:
+            grib_version=2
+        else:
+            sys.exit()
+
+        print(infile,isgrib,grib_version)
+        return isgrib,issfx,grib_version
+
+#########################################################################
+    def toc(self, printlev=None):
+        if printlev is not None:
+            self.printlev = printlev
+        for fname in self.file_templates:
+           if fname in self.data:
+                content = self.data[fname]
+                dates = [d for d in sorted(content)]
+                if content[dates[-1]][0] is None:
+                  file_to_scan = self.reconstruct(dates[-1],file_template=fname)[-1]
+                else: 
+                  file_to_scan = self.reconstruct(dates[-1],content[dates[-1]][-1],fname)[-1]
+                print(fname,file_to_scan)
+                self.build_toc(fname,file_to_scan)
+
+#########################################################################
     def scan(self):
 
       print(" scan:",self.name)
@@ -552,10 +654,11 @@ def ecfs_scan(path):
  return res
 
 #########################################################################
-def ecfs_copy(infile,outfile):
+def ecfs_copy(infile,outfile,printlev=0):
 
  args = ['ecp',infile,outfile]
- print(' '.join(args))
+ if printlev > 1 :
+     print(' '.join(args))
  cmd = subprocess.Popen(args, stdout=subprocess.PIPE)
  cmd_out, cmd_err = cmd.communicate()
 

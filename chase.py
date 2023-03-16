@@ -25,6 +25,7 @@ def main(argv) :
   parser.add_argument('-host',dest="host",help='Set host to check, default is current',required=False,default=None)
   parser.add_argument('-list',action="store_true",help='List content of given case(s)',required=False,default=False)
   parser.add_argument('-scan',action="store_true",help='Scan case for data',required=False,default=False)
+  parser.add_argument('-toc',action="store_true",help='Create TOC for give filetypes',required=False,default=False)
   parser.add_argument('-path',dest="path",help='Path to directory with cases',required=False,default='cases')
   parser.add_argument('-v', action='append_const', const=int, help='Increase verbosity for list command in particular')
   parser.add_argument('-s', action='append_const', const=int, help='Decrease verbosity for list command in particular')
@@ -60,6 +61,8 @@ def main(argv) :
     myc.scan()
   elif args.list :
     myc.print()
+  elif args.toc :
+    myc.toc()
 
 if __name__ == "__main__":
     sys.exit(main(sys.argv))
