@@ -529,7 +529,6 @@ class Exp():
         else:
             sys.exit()
 
-        print(infile,isgrib,grib_version)
         return isgrib,issfx,grib_version
 
 #########################################################################
