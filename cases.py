@@ -199,7 +199,7 @@ class Case():
            self.runs.print(self.printlev)
 
     def load(self):
-        filename= self.path+'/'+self.case+'/data.yaml'
+        filename= self.path+'/'+self.case+'/data.json'
         if os.path.isfile(filename):
          with open(filename, "r") as infile:
            data = json.load(infile)
@@ -233,7 +233,7 @@ class Case():
         self.dump() 
 #########################################################################
     def dump(self):
-          filename= self.path+'/'+self.case+'/data.yaml'
+          filename= self.path+'/'+self.case+'/data.json'
           with open(filename,"w") as outfile:
               print('  write to:',filename)
               json.dump(self.data,outfile,indent=1)

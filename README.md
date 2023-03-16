@@ -35,7 +35,7 @@ The available wild cards are used above are
  * %LM for forecast length in minutes in combination with hours
  * %* any character
  
-In each `meta.yaml` file we may specify an arbitrary number of experiments/runs. Please repeat the above mentioned for each run. The data section, `data.yaml`, should be generated, not manually edited. Instructions for how the generation is done is found further down.
+In each `meta.yaml` file we may specify an arbitrary number of experiments/runs. Please repeat the above mentioned for each run. The data section, `data.json`, should be generated, not manually edited. Instructions for how the generation is done is found further down.
 
 ## The python support
 
@@ -55,7 +55,7 @@ For a newly added case the data part has to be benerated running
 ```
 ./chase.py -scan -case MYCASE [ -exp MYEXP ]
 ```
-This will generate the file `cases/MYCASE/data.yaml` containing all dates and leadtimes (in seconds) for the given files. Default is to scan all experiments within a case, give MYEXP to just updated a single run. Note that scanning ECFS may take some minutes. Check the result by
+This will generate the file `cases/MYCASE/data.json` containing all dates and leadtimes (in seconds) for the given files. Default is to scan all experiments within a case, give MYEXP to just updated a single run. Note that scanning ECFS may take some minutes. Check the result by
 
 ```
 ./chase.py -list -case MYCASE [ -exp MYEXP ] -v -v 
@@ -68,7 +68,7 @@ Run without [ -exp MYEXP ] if you have stored multiple exp's in meta.yaml:
 
 ```
 
-Don't forget to commit the new file data.yaml to the repo after you've created or updated it. For now commits should be done directly to the master branch.
+Don't forget to commit the new file data.json to the repo after you've created or updated it. For now commits should be done directly to the master branch.
 
 ### The cases module
 
