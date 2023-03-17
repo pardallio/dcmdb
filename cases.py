@@ -475,7 +475,11 @@ class Exp():
     def build_toc(self,file_template,file_to_scan):
 
         isgrib,issfx,grib_version = self.check_file_type(file_template)
-        if isgrib:
+        json_filename = f"{self.path}/{self.case}/{self.name}_{file_template}.json"
+
+        if os.path.isfile(json_filename) and self.printlev > 0 :
+            print(f" found {json_filename}")
+        elif isgrib and not os.path.isfile(json_filename):
           if issfx and grib_version == 1:
               parameters='indicatorOfParameter,level,typeOfLevel,timeRangeIndicator'
           elif grib_version == 1:
@@ -526,7 +530,10 @@ class Exp():
             grib_version=1
         elif 'GRIBPF' in infile:
             grib_version=2
+        elif '.grb2' in infile:
+            grib_version=2
         else:
+            print(f"Cannot recognize {infile}")
             sys.exit()
 
         return isgrib,issfx,grib_version
@@ -543,7 +550,7 @@ class Exp():
                   file_to_scan = self.reconstruct(dates[-1],file_template=fname)[-1]
                 else: 
                   file_to_scan = self.reconstruct(dates[-1],content[dates[-1]][-1],fname)[-1]
-                print(fname,file_to_scan)
+
                 self.build_toc(fname,file_to_scan)
 
 #########################################################################
@@ -658,10 +665,14 @@ def ecfs_copy(infile,outfile,printlev=0):
  args = ['ecp',infile,outfile]
  if printlev > 1 :
      print(' '.join(args))
- cmd = subprocess.Popen(args, stdout=subprocess.PIPE)
+ cmd = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
  cmd_out, cmd_err = cmd.communicate()
 
- res = [line.decode("utf-8") for line in cmd_out.splitlines()]
+ if cmd_err is not None:
+   if len(cmd_err) > 0 :
+     res = cmd_err.decode("utf-8")
+     print(res)
+     sys.exit()
 
 #########################################################################
 def hub(p,dtgs,leadtime=None):
