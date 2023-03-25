@@ -44,7 +44,6 @@ class Cases:
             sys.exit()
 
 #########################################################################
-
     def get_hostname(self):
 
         import socket
@@ -225,7 +224,7 @@ class Case():
 
 ##############################################################################
     def load(self):
-        filename= self.path+'/'+self.case+'/data.json'
+        filename= f"{self.path}/{self.case}/data.json"
         if os.path.isfile(filename):
          with open(filename, "r") as infile:
            data = json.load(infile)
@@ -259,7 +258,7 @@ class Case():
         self.dump() 
 #########################################################################
     def dump(self):
-          filename= self.path+'/'+self.case+'/data.json'
+          filename= f"{self.path}/{self.case}/data.json"
           with open(filename,"w") as outfile:
               print('  write to:',filename)
               json.dump(self.data,outfile,indent=1)
@@ -492,14 +491,19 @@ class Exp():
 
           if re.match('^ec',file_to_scan):
              outfile=f"{os.environ['SCRATCH']}/{os.path.basename(file_to_scan)}"
-             ecfs_copy(file_to_scan,outfile,self.printlev)
+             found_file = ecfs_copy(file_to_scan,outfile,self.printlev)
           else:
              outfile = file_to_scan
-          json_filename = f"{self.path}/{self.case}/{self.name}_{file_template}.json"
-          os.system(f"grib_ls -p {parameters} -j {outfile} > {json_filename}")
-          print(f" create TOC for {file_template} as {json_filename}")
-          if re.match('^ec',file_to_scan):
-            os.remove(outfile)
+             found_file = True
+
+          if found_file:
+            json_filename = f"{self.path}/{self.case}/{self.name}_{file_template}.json"
+            os.system(f"grib_ls -p {parameters} -j {outfile} > {json_filename}")
+            print(f" create TOC for {file_template} as {json_filename}")
+            if re.match('^ec',file_to_scan):
+              os.remove(outfile)
+
+        os.environ['ECCODES_DEFINITION_PATH'] = f"{self.edp}"
 
 #########################################################################
     def check_file_type(self,infile):
@@ -514,7 +518,7 @@ class Exp():
           print(" could not find codes_info, have you loaded a module for eccodes?")
           sys.exit()
         cmd_out, cmd_err = cmd.communicate()
-        edp=cmd_out.decode("utf-8")
+        self.edp=cmd_out.decode("utf-8")
 
         if 'ICMSH' in infile:
             isgrib=False
@@ -523,7 +527,7 @@ class Exp():
             grib_version=1
         elif 'grib2' in infile:
             grib_version=2
-            os.environ['ECCODES_DEFINITION_PATH'] = f"{os.getcwd()}/eccodes/definitions:{edp}"
+            os.environ['ECCODES_DEFINITION_PATH'] = f"{os.getcwd()}/eccodes/definitions:{self.edp}"
             if self.printlev > 1 :
                 print(f" Update ECCODES_DEFINITION_PATH:{os.environ['ECCODES_DEFINITION_PATH']}")
         elif 'grib' in infile:
@@ -672,7 +676,9 @@ def ecfs_copy(infile,outfile,printlev=0):
    if len(cmd_err) > 0 :
      res = cmd_err.decode("utf-8")
      print(res)
-     sys.exit()
+     return False
+
+ return False
 
 #########################################################################
 def hub(p,dtgs,leadtime=None):
@@ -699,7 +705,6 @@ def hub(p,dtgs,leadtime=None):
         for k,v in re_map.items():
             path = path.replace(k,str(v))
  
-        print(p,path)
         return path
 
 #########################################################################
