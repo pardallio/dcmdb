@@ -6,6 +6,8 @@
 
 ## The metadata
 
+### The user provided metadata
+
 For each case we suggest to create a directory under `cases`. Pick a name that is descriptive and unique enough. In a file called meta.yaml we introduce
 
 ``` yaml
@@ -37,7 +39,13 @@ The available wild cards are used above are
  
 In each `meta.yaml` file we may specify an arbitrary number of experiments/runs. Please repeat the above mentioned for each run. The data section, `data.json`, should be generated, not manually edited. Instructions for how the generation is done is found further down.
 
-## The python support
+### The generated metadata
+
+We generate two types of metadata files for each run.
+ * data.json where all information about periods and forecast lengths are found for each file type.
+ * {run}_{file_template}.json which contains a table of content for each GRIB filetype to allow a quick search without having to open a file.
+ 
+## The python support tools
 
 A module and a command line tool has been created to support inspection of the case content and recounstruction of file paths. The yaml files of course could be accessed from other languages such as R or julia as well.
 
@@ -59,16 +67,18 @@ This will generate the file `cases/MYCASE/data.json` containing all dates and le
 
 ```
 ./chase.py -list -case MYCASE [ -exp MYEXP ] -v -v 
-
 ```
 Run without [ -exp MYEXP ] if you have stored multiple exp's in meta.yaml:
 
 ```
 ./chase.py -scan -case MYCASE -v -v
-
+```
+To generate the table of content for each file_template run, in the same way as for the scanning:
+```
+./chase.py -toc [-case MYCASE -v -v]
 ```
 
-Don't forget to commit the new file data.json to the repo after you've created or updated it. For now commits should be done directly to the master branch.
+Don't forget to commit the new json files to the repo after you've created or updated them. Make sure to only commit to the develop branch.
 
 ### The cases module
 
