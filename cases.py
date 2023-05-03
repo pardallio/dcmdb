@@ -416,8 +416,13 @@ class Exp():
               if content[dates[0]][0] is None:
                 print('    No leadtime information available')
               else:
-                lhs,lms = leadtime2hm(content[dates[0]][0])
-                lhe,lme = leadtime2hm(content[dates[0]][-1])
+                maxlist = []
+                minlist = []
+                for date,leadtimes in sorted(content.items()):
+                   maxlist.append(max(leadtimes))
+                   minlist.append(min(leadtimes))
+                lhs,lms = leadtime2hm(min(minlist))
+                lhe,lme = leadtime2hm(max(maxlist))
                 print('    Leadtimes:{:02d}h{:02d}m - {:02d}h{:02d}m'.format(lhs,lms,lhe,lme))
             elif self.printlev < 3:
               if content[dates[0]][0] is not None:
