@@ -5,6 +5,9 @@ deode_cy46ref:
   atos:
      path_template : 'ec:/smb/harmonie/deode_cy46ref/%Y/%m/%d/%H/'
 
+  lumi_transfer:
+     path_template : '/scratch/project_462000140/de_33050_common_data/cases/gavle_2021/deode_cy46ref/%Y/%m/%d/%H/'
+
   domain : 
      name : 'METCOOP25D'
      resolution : 2500

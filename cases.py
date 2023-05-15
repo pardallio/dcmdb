@@ -159,18 +159,51 @@ class Cases:
           else: 
             sys.exit()
 #########################################################################
+    def clean(self,files=[],outpath='.'):
+    
+        for fname in files:
+          f = os.path.join(outpath,os.path.basename(fname))
+          os.remove(f)
+          print("  remove:",f)
+
+#########################################################################
+    def check_remote(self,files=[], remote=None):
+    
+        bare_files = [os.path.basename(x) for x in files]
+        listcmd=["ssh",remote['host'],"ls","-1",remote['outpath']]
+        missing_files = []
+        cmd = subprocess.Popen(listcmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+        cmd_out, cmd_err = cmd.communicate()
+        if cmd_out is not None: 
+          for line in cmd_out.splitlines():
+            fname = line.decode("utf-8")
+            try:
+              i = bare_files.index(fname)
+              bare_files.pop(i)
+            except ValueError:
+              pass
+
+        return bare_files
+#########################################################################
     def transfer(self,files=[],outpath='.',remote=None):
     
         os.makedirs(outpath,exist_ok=True)
-        self.get(files,outpath)
-        cmd='ssh {} "mkdir -p {}"'.format(remote['host'],remote['outpath'])
-        print(cmd)
-        os.system(cmd)
-        rhost = remote['host']
-        rpath = remote['outpath']
-        cmd=f'rsync -vaux {outpath}/ {rhost}:{rpath}/'
-        print(cmd)
-        os.system(cmd)
+        missing_files = self.check_remote(files,remote)
+
+        if len(missing_files) > 0:
+          self.get(files,outpath)
+          cmd='ssh {} "mkdir -p {}"'.format(remote['host'],remote['outpath'])
+          print(cmd)
+          os.system(cmd)
+          rhost = remote['host']
+          rpath = remote['outpath']
+          cmd=f'rsync -vaux {outpath}/ {rhost}:{rpath}/'
+          print(cmd)
+          os.system(cmd)
+          self.clean(files,outpath)
+        else:
+          print("  all files already in place for this date")
+
 #########################################################################
 class Case():
 
@@ -672,7 +705,7 @@ def ecfs_scan(path):
 def ecfs_copy(infile,outfile,printlev=0):
 
  args = ['ecp',infile,outfile]
- if printlev > 1 :
+ if printlev > 0 :
      print(' '.join(args))
  cmd = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
  cmd_out, cmd_err = cmd.communicate()
