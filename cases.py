@@ -202,7 +202,8 @@ class Cases:
           os.system(cmd)
           self.clean(files,outpath)
         else:
-          print("  all files already in place for this date")
+          nfiles=len(files)
+          print(f"  all {nfiles} files already in place for this date")
 
 #########################################################################
 class Case():
