@@ -1,5 +1,5 @@
 # Introduction
 
-Data produced for the Denmark case from Jun 11-12 2019
+Data produced for the solar energy case from Jun 11-12 2019
 
 
