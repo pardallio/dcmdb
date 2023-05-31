@@ -15,20 +15,21 @@ import os
 
 
 # Specify the case and the run
-case = 'gavle_2021' 
-run = 'deode_cy46ref'
+case = 'benelux_heatwave_2018' 
+run = 'AQ_Benelux_750m_grib_archive'
 
 # Define period set to None to fetch all, step defines the step between cycles
-# sdate = datetime.strptime("2021-08-16 00","%Y-%m-%d %H")
-# edate = datetime.strptime("2021-08-16 06","%Y-%m-%d %H")
-# step  = timedelta(hours=6)      
-sdate = None
-edate = None
+#sdate = datetime.strptime("2021-08-16 00","%Y-%m-%d %H")
+#edate = datetime.strptime("2021-08-16 06","%Y-%m-%d %H")
+sdate = datetime.strptime("2018-07-23 00","%Y-%m-%d %H")
+edate = datetime.strptime("2018-07-23 06","%Y-%m-%d %H")
+step  = timedelta(hours=6)      
+#sdate = None
+#edate = None
 
 
 # Specify the remote host, i.e. lumi
 remote = "lumi_transfer"
-#remote = "my_lumi_user@lumi.csc.fi"
 
 # Load the data 
 example = Cases(selection = { case : [run] })
