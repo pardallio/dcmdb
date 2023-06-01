@@ -204,6 +204,8 @@ class Cases:
         else:
           nfiles=len(files)
           print(f"  all {nfiles} files already in place for this date")
+          if self.printlev > 0:
+              print(files)
 
 #########################################################################
 class Case():
@@ -780,4 +782,26 @@ def leadtime2hm(leadtime):
          sys.exit()
 
        return lh,int(lm)
+
+#########################################################################
+def expand_dates(sdate,edate,step):
+  # Construct a list of dates
+  dates=[]
+  if sdate is not None and edate is not None:
+    while sdate <= edate:
+      dates.append(sdate)
+      sdate += step
+
+  return dates
+
+#########################################################################
+def expand_times(stime,etime,step):
+  # Construct a list of lead_times
+  leadtimes=None
+  if stime is not None and etime is not None:
+    while stime <= etime:
+      leadtimes.append(stime.days*24*3600+stime.seconds)
+      stime += step
+
+  return leadtimes
 
