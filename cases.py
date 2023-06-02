@@ -799,6 +799,7 @@ def expand_times(stime,etime,step):
   # Construct a list of lead_times
   leadtimes=None
   if stime is not None and etime is not None:
+    leadtimes=[]
     while stime <= etime:
       leadtimes.append(stime.days*24*3600+stime.seconds)
       stime += step
