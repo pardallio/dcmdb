@@ -10,7 +10,7 @@
 #
 
 from datetime import datetime,timedelta
-from cases import Cases, hub
+from cases import Cases, hub, expand_dates, expand_times
 import os
 
 
@@ -21,9 +21,18 @@ run = 'deode_cy46ref'
 # Define period set to None to fetch all, step defines the step between cycles
 # sdate = datetime.strptime("2021-08-16 00","%Y-%m-%d %H")
 # edate = datetime.strptime("2021-08-16 06","%Y-%m-%d %H")
-# step  = timedelta(hours=6)      
+# step  = timedelta(hours=6)
 sdate = None
 edate = None
+step = None
+
+# Define leadtimes to fetch
+#stime = timedelta(hours=0)
+#etime = timedelta(hours=3)
+#leadtime_step = timedelta(days=0, hours=1, seconds=0)
+stime=None
+etime=None
+leadtime_step=None
 
 
 # Specify the remote host, i.e. lumi
@@ -31,14 +40,11 @@ remote = "lumi_transfer"
 #remote = "my_lumi_user@lumi.csc.fi"
 
 # Load the data 
-example = Cases(selection = { case : [run] })
+example = Cases(selection = { case : [run] }, printlev=0)
 
-# Construct a list of dates
-dates=[]
-if sdate is not None and edate is not None:
-  while sdate <= edate:
-    dates.append(sdate)
-    sdate += step
+# Construct a list of dates and times
+dates = expand_dates(sdate, edate, step)
+leadtimes = expand_times(stime, etime, leadtime_step)
 
 for case in example.names:
    for exp in example.cases.names:
@@ -61,7 +67,7 @@ for case in example.names:
            scratch_outpath = hub(scratch_template,date)
 
            # Get a list of files
-           files = example.reconstruct(dtg=date)
+           files = example.reconstruct(dtg=date,leadtime=leadtimes)
 
            # Do the actual copy from ecf to scratch and rsync to lumi, 
            # and clean the intermediate files
