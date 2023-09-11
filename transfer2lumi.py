@@ -103,9 +103,19 @@ def transfer(cfg):
                 os.environ["SCRATCH"], case, exp, "%Y/%m/%d/%H/"
             )
 
-            x = example.cases.runs.data
-            file_template = example.cases.runs.file_templates[0]
 
+            i=0
+            file_template_used = None
+            if "file_template" in cfg:
+              file_template_used = cfg["file_template"]
+              try:
+                i = example.cases.runs.file_templates.index(cfg["file_template"])
+              except ValueError:
+                  print("No match for:", cfg["file_template"])
+                  sys.exit()
+            file_template = example.cases.runs.file_templates[i]
+
+            x = example.cases.runs.data
             for date in x[file_template].keys():
 
                 if len(cfg["dates"]) > 0:
@@ -120,7 +130,7 @@ def transfer(cfg):
                 scratch_outpath = hub(scratch_template, date)
 
                 # Get a list of files
-                files = example.reconstruct(dtg=date, leadtime=cfg["leadtimes"])
+                files = example.reconstruct(dtg=date, leadtime=cfg["leadtimes"], file_template=file_template_used)
 
                 # Do the actual copy from ecf to scratch and rsync to lumi,
                 # and clean the intermediate files
