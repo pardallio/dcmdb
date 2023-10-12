@@ -1,0 +1,12 @@
+case1:
+
+  file_templates : ['GRIBPFDEOD6cf0c7a5497714b9c10b+%LLLLh%LMm00s']
+
+  atos:
+     path_template : 'ectmp:/snh/deode/case1/archive/%Y/%m/%d/%H/'
+
+  lumi_transfer:
+     path_template : '/scratch/project_465000527/de_33050_common_data/cases/WP4_runs_v1/case1/%Y/%m/%d/%H/'
+
+  domain:
+
