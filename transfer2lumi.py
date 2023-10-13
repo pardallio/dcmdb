@@ -116,6 +116,11 @@ def transfer(cfg):
             file_template = example.cases.runs.file_templates[i]
 
             x = example.cases.runs.data
+
+            if file_template not in x:
+                print(" no data available for:", file_template)
+                continue
+
             for date in x[file_template].keys():
 
                 if len(cfg["dates"]) > 0:
