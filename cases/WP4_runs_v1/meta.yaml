@@ -75,3 +75,28 @@ case7_v1:
   - GRIBPFDEOD6cf0c7a5497714b9c10b+%LLLLh%LMm00s
   lumi_transfer:
     path_template: /scratch/project_465000527/de_33050_common_data/cases/WP4_runs_v1/case7_v1/%Y/%m/%d/%H/
+
+
+fin_case01:
+  atos:
+    path_template: ectmp:/fie/deode/case01/archive/%Y/%m/%d/%H/
+  domain:
+    name: case01_1000_750
+    xlatcen: 62.97
+    xloncen: 21.77
+  file_templates:
+  - GRIBPFDEODcase01_1000_750+%LLLLh%LMm00s
+  lumi_transfer:
+    path_template: /scratch/project_465000527/de_33050_common_data/cases/WP4_runs_v1/finland/case01/%Y/%m/%d/%H/
+
+fin_case02:
+  atos:
+    path_template: ectmp:/fie/deode/case02/archive/%Y/%m/%d/%H/
+  domain:
+    name: case02_1000_750
+    xlatcen: 68.23
+    xloncen: 24.83
+  file_templates:
+  - GRIBPFDEODcase02_1000_750+%LLLLh%LMm00s
+  lumi_transfer:
+    path_template: /scratch/project_465000527/de_33050_common_data/cases/WP4_runs_v1/finland/case02/%Y/%m/%d/%H/
