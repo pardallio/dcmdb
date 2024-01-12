@@ -9,3 +9,15 @@ cy43_ref_iceland:
      name : 'ICELAND'
      resolution : 2500
      levels : 65
+
+cy46h1_deode_750m_iceland:
+
+  file_templates : ['fc%Y%m%d%H+%LLLgrib2','fc%Y%m%d%H+%LLLgrib2_fp','fc%Y%m%d%H+%LLLgrib_sfx','fc%Y%m%d%H+%LLLgrib_sfxs']
+
+  atos:
+     path_template : 'ec:/iczx/DEODE/cy46h1_deode_750m_iceland/%Y/%m/%d/%H/'
+
+  domain : 
+     name : 'IS750m'
+     resolution : 750 
+     levels : 90 
