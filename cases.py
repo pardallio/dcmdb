@@ -19,9 +19,14 @@ class Cases:
         self.host = host if host is not None else self.get_hostname()
         self.selection = selection if selection is not None else {}
 
+        if isinstance(self.selection, dict):
+            self.exp_given = False
+            for k,v in self.selection.items():
+              self.exp_given = len(v) > 0 or self.exp_given
         if isinstance(self.selection, str):
             self.selection = [self.selection]
         if isinstance(self.selection, list):
+            self.exp_given = False
             self.selection = {k: [] for k in self.selection}
 
         if names is None:
@@ -104,6 +109,7 @@ class Cases:
 
             mm[x] = meta
             res[x] = Case(self.host, self.path, self.printlev, meta, x)
+            res[x].exp_given = self.exp_given
 
         if self.printlev > 0:
             print("Loaded:", case_list)
@@ -302,6 +308,10 @@ class Case:
 
     def scan(self):
         findings = {}
+        if not self.exp_given:
+            if self.data[self.host] != {}:
+                self.data[self.host] = {}
+                print(" rewrite data.json from scratch!")
         if isinstance(self.runs, dict):
             for name, exp in self.runs.items():
                 result, signal = exp.scan()
