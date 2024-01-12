@@ -184,3 +184,135 @@ fin_case09:
   - GRIBPFDEODcase09_1000_750+%LLLLh%LMm00s
   lumi_transfer:
     path_template: /scratch/project_465000527/de_33050_common_data/cases/WP4_runs_v1/finland/case09/%Y/%m/%d/%H/
+
+fin_case10:
+  atos:
+    path_template: ectmp:/fie/deode/case10/archive/%Y/%m/%d/%H/
+  domain:
+    name: case10_1000_750
+    xlatcen: 61.79
+    xloncen: 28.85
+  file_templates:
+  - GRIBPFDEODcase10_1000_750+%LLLLh%LMm00s
+  lumi_transfer:
+    path_template: /scratch/project_465000527/de_33050_common_data/cases/WP4_runs_v1/finland/case10/%Y/%m/%d/%H/
+
+fin_case11:
+  atos:
+    path_template: ectmp:/fie/deode/case11/archive/%Y/%m/%d/%H/
+  domain:
+    name: case11_1000_750
+    xlatcen: 62.49
+    xloncen: 21.76
+  file_templates:
+  - GRIBPFDEODcase11_1000_750+%LLLLh%LMm00s
+  lumi_transfer:
+    path_template: /scratch/project_465000527/de_33050_common_data/cases/WP4_runs_v1/finland/case11/%Y/%m/%d/%H/
+
+fin_case12:
+  atos:
+    path_template: ectmp:/fie/deode/case12/archive/%Y/%m/%d/%H/
+  domain:
+    name: case12_1000_750
+    xlatcen: 63.38
+    xloncen: 28.66
+  file_templates:
+  - GRIBPFDEODcase12_1000_750+%LLLLh%LMm00s
+  lumi_transfer:
+    path_template: /scratch/project_465000527/de_33050_common_data/cases/WP4_runs_v1/finland/case12/%Y/%m/%d/%H/
+
+fin_case13:
+  atos:
+    path_template: ectmp:/fie/deode/case13/archive/%Y/%m/%d/%H/
+  domain:
+    name: case13_1000_750
+    xlatcen: 64.66
+    xloncen: 28.03
+  file_templates:
+  - GRIBPFDEODcase13_1000_750+%LLLLh%LMm00s
+  lumi_transfer:
+    path_template: /scratch/project_465000527/de_33050_common_data/cases/WP4_runs_v1/finland/case13/%Y/%m/%d/%H/
+
+fin_case14:
+  atos:
+    path_template: ectmp:/fie/deode/case14/archive/%Y/%m/%d/%H/
+  domain:
+    name: case14_1000_750
+    xlatcen: 61.79
+    xloncen: 28.85
+  file_templates:
+  - GRIBPFDEODcase14_1000_750+%LLLLh%LMm00s
+  lumi_transfer:
+    path_template: /scratch/project_465000527/de_33050_common_data/cases/WP4_runs_v1/finland/case14/%Y/%m/%d/%H/
+
+fin_case15:
+  atos:
+    path_template: ectmp:/fie/deode/case15/archive/%Y/%m/%d/%H/
+  domain:
+    name: case15_1000_750
+    xlatcen: 64.30
+    xloncen: 30.17
+  file_templates:
+  - GRIBPFDEODcase15_1000_750+%LLLLh%LMm00s
+  lumi_transfer:
+    path_template: /scratch/project_465000527/de_33050_common_data/cases/WP4_runs_v1/finland/case15/%Y/%m/%d/%H/
+
+fin_case16:
+  atos:
+    path_template: ectmp:/fie/deode/case16/archive/%Y/%m/%d/%H/
+  domain:
+    name: case16_1000_750
+    xlatcen: 65.24
+    xloncen: 28.45
+  file_templates:
+  - GRIBPFDEODcase16_1000_750+%LLLLh%LMm00s
+  lumi_transfer:
+    path_template: /scratch/project_465000527/de_33050_common_data/cases/WP4_runs_v1/finland/case16/%Y/%m/%d/%H/
+
+fin_case17:
+  atos:
+    path_template: ectmp:/fie/deode/case17/archive/%Y/%m/%d/%H/
+  domain:
+    name: case17_1000_750
+    xlatcen: 63.23
+    xloncen: 29.23
+  file_templates:
+  - GRIBPFDEODcase17_1000_750+%LLLLh%LMm00s
+  lumi_transfer:
+    path_template: /scratch/project_465000527/de_33050_common_data/cases/WP4_runs_v1/finland/case17/%Y/%m/%d/%H/
+
+fin_case18:
+  atos:
+    path_template: ectmp:/fie/deode/case18/archive/%Y/%m/%d/%H/
+  domain:
+    name: case18_1000_750
+    xlatcen: 61.25
+    xloncen: 22.34
+  file_templates:
+  - GRIBPFDEODcase18_1000_750+%LLLLh%LMm00s
+  lumi_transfer:
+    path_template: /scratch/project_465000527/de_33050_common_data/cases/WP4_runs_v1/finland/case18/%Y/%m/%d/%H/
+
+fin_case19:
+  atos:
+    path_template: ectmp:/fie/deode/case19/archive/%Y/%m/%d/%H/
+  domain:
+    name: case19_1000_750
+    xlatcen: 59.84
+    xloncen: 23.25
+  file_templates:
+  - GRIBPFDEODcase19_1000_750+%LLLLh%LMm00s
+  lumi_transfer:
+    path_template: /scratch/project_465000527/de_33050_common_data/cases/WP4_runs_v1/finland/case19/%Y/%m/%d/%H/
+
+fin_case20:
+  atos:
+    path_template: ectmp:/fie/deode/case20/archive/%Y/%m/%d/%H/
+  domain:
+    name: case20_1000_750
+    xlatcen: 61.46
+    xloncen: 23.75
+  file_templates:
+  - GRIBPFDEODcase20_1000_750+%LLLLh%LMm00s
+  lumi_transfer:
+    path_template: /scratch/project_465000527/de_33050_common_data/cases/WP4_runs_v1/finland/case20/%Y/%m/%d/%H/
