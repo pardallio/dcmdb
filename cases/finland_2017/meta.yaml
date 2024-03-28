@@ -120,3 +120,19 @@ Prot_F17_500_1500:
      name : 'Prot_F17_500_1500'
      resolution : 500
      levels : 90
+
+
+Prot_v040_FI7_750_1500:
+
+  file_templates : ['GRIBDEOD+0%LLLh00m00s.sfx','GRIBPFDEODcaseFin2017+0%LLLh00m00s']
+
+  atos:
+     path_template : 'ectmp:/fie/deode/caseFin2017/archive/%Y/%m/%d/%H/'
+
+  lumi_transfer:
+     path_template : '/scratch/project_465000527/de_33050_common_data/cases/finland_2017/Prot_v040_FI7_750_1500/%Y/%m/%d/%H/'
+
+  domain :
+     name : 'caseFin2017'
+     resolution : 750
+     levels : 90
