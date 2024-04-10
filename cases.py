@@ -375,6 +375,7 @@ class Exp:
             "%d": 2,  # Day
             "%H": 2,  # Hour
             "%M": 2,  # Minute
+            "%S": 2,  #Seconds
             "*": 0,  # Wildcard
             "%LM": 2,  # Leadtime in minutes
             "%LLLL": 4,  # Leadtime in hours
@@ -722,7 +723,6 @@ class Exp:
 
         base_path = self.path_template[:i] if i > -1 else self.path_template
         part_path = self.path_template[i:] if i > -1 else ""
-
         if re.match("^ec", base_path):
             subdirs = self.path_template[i:].split("/")
             if subdirs[-1] == "":
