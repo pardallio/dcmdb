@@ -1,0 +1,24 @@
+Portugal_2017_48t3_deode:
+
+  file_templates : ['GRIBPFDEODPT_1500x1500_500m+%LLLLh%Mm%Ss','ICMSHDEOD+%LLLLh%Mm%Ss']
+
+  atos:
+     path_template : 'ec:/prt2342/deode/arome_PT500/archive/%Y/%m/%d/%H/'
+
+  domain : 
+     name : 'PT_1500x1500_500m'
+     resolution : 500
+     levels : 90
+
+
+Portugal_2017_43t2_arome:
+
+  file_templates : ['PT2_0002_%Y%m%d%H_%LL']
+
+  atos:
+     path_template : 'ec:/pte/deode/ptFireFall2017/%m/%d/%H/'
+
+  domain : 
+     name : 'PT2'
+     resolution : 2500
+     levels : 90
