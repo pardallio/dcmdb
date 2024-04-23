@@ -1,12 +1,12 @@
 Madeira_2020_48t3_deode:
 
-  file_templates : ['GRIBPFDEODPT_1500x1500_500m+%LLLLh%Mm%Ss','ICMSHDEOD+%LLLLh%Mm%Ss']
+  file_templates : ['GRIBPFDEODMAD_1500x1500_500m+%LLLLh%Mm%Ss','ICMSHDEOD+%LLLLh%Mm%Ss']
 
   atos:
-     path_template : 'ectmp:/prt2342/deode/arome_PT500/archive/%Y/%m/%d/%H/'
+     path_template : 'ec:/prt2342/deode/arome_MAD500/archive/%Y/%m/%d/%H/'
 
   domain : 
-     name : 'PT_1500x1500_500m'
+     name : 'MAD_1050x940_500m'
      resolution : 500
      levels : 90
 
