@@ -1,30 +1,14 @@
-AQD2_25kmL90: 
+NNorway_fires_20240811: 
 
-  file_templates : ['fc%Y%m%d%H+%LLLgrib_sfxs','fc%Y%m%d%H+%LLLgrib2_fp','fc%Y%m%d%H+%LLLgrib2']
+  file_templates : [ 'GRIBPFDEODNNorway_fires_500m+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s.sfx' ]
 
   atos:
-     path_template : 'ec:/nhe/harmonie/AQD2_25kmL90/%Y/%m/%d/%H/'
+     path_template : 'ectmp:/nhad/deode/CY46h1_HARMONIE_AROME_NNorway_fires_500m/archive/%Y/%m/%d/%H/'
 
   lumi_transfer:
-     path_template : '/scratch/project_465000527/de_33050_common_data/cases/benelux_heatwave_2018/AQD2_25kmL90/%Y/%m/%d/%H/'
+     path_template : ''
   
   domain : 
-     name : 'NETHERLANDS'
-     resolution : 2500
+     name : 'NNorway_fires_500m'
+     resolution : 500
      levels : 90
-
-AQ_Benelux_750m_grib_archive:
-
-  file_templates : ['fc%Y%m%d%H+%LLLgrib_sfxs','fc%Y%m%d%H+%LLLgrib2_fp','fc%Y%m%d%H+%LLLgrib2']
-
-  atos:
-     path_template : 'ec:/nhad/harmonie/AQ_Benelux_750m_grib_archive/%Y/%m/%d/%H/'
-
-  lumi_transfer:
-     path_template : '/scratch/project_465000527/de_33050_common_data/cases/benelux_heatwave_2018/AQ_Benelux_750m_grib_archive/%Y/%m/%d/%H/'
-
-  domain : 
-     name : 'NETHERLANDS'
-     resolution : 750
-     levels : 90
-

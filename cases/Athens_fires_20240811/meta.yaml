@@ -3,7 +3,7 @@ athens_fires_2024:
   file_templates : [ 'GRIBPFDEODathens_fires_2024+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s.sfx' ]
 
   atos:
-     path_template : 'ectmp:/nhad/deode/CY48t3_AROME_athens_fires_2024/archive/2024/08/11/00/'
+     path_template : 'ectmp:/nhad/deode/CY48t3_AROME_athens_fires_2024/archive/%Y/%m/%d/%H/'
 
   lumi_transfer:
      path_template : ''
