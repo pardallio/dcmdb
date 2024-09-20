@@ -27,3 +27,18 @@ CEurope_flooding_20240914_1000m:
      name : 'fl_0914_1000m'
      resolution : 1000
      levels : 90
+
+CEurope_flooding_20240912_1000m:
+
+  file_templates : [ 'GRIBPFDEODfl_0914_1000m+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s.sfx' ]
+
+  atos:
+     path_template : 'ec:/nhac/deode/CY48t3_AROME_fl_0912_1000m/archive/%Y/%m/%d/%H/'
+
+  lumi_transfer:
+     path_template : ''
+  
+  domain : 
+     name : 'fl_0914_1000m'
+     resolution : 1000
+     levels : 90
