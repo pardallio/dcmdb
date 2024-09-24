@@ -1,6 +1,8 @@
 GEurope_flooding_20240914_arome_500m:
 
-  file_templates : [ 'GRIBPFDEODfl_0914_500m+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s.sfx' ]
+  file_templates : [ 'GRIBPFDEODfl_0914_500m+%LLLLh00m00s',
+                     'ICMSHDEOD+%LLLLh00m00s',
+                     'ICMSHDEOD+%LLLLh00m00s.sfx' ]
 
   atos:
      path_template : 'ec:/nhac/deode/CY48t3_AROME_fl_0914_500m/archive/%Y/%m/%d/%H/'
@@ -15,7 +17,9 @@ GEurope_flooding_20240914_arome_500m:
 
 CEurope_flooding_20240914_arome_1000m:
 
-  file_templates : [ 'GRIBPFDEODfl_0914_1000m+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s.sfx' ]
+  file_templates : [ 'GRIBPFDEODfl_0914_1000m+%LLLLh00m00s',
+                     'ICMSHDEOD+%LLLLh00m00s',
+                     'ICMSHDEOD+%LLLLh00m00s.sfx' ]
 
   atos:
      path_template : 'ec:/nhac/deode/CY48t3_AROME_fl_0914_1000m/archive/%Y/%m/%d/%H/'
@@ -30,7 +34,9 @@ CEurope_flooding_20240914_arome_1000m:
 
 CEurope_flooding_20240914_arome_2000m:
 
-  file_templates : [ 'GRIBPFDEODfl_0914_2000m+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s.sfx' ]
+  file_templates : [ 'GRIBPFDEODfl_0914_2000m+%LLLLh00m00s',
+                     'ICMSHDEOD+%LLLLh00m00s',
+                     'ICMSHDEOD+%LLLLh00m00s.sfx' ]
 
   atos:
      path_template : 'ec:/sink/deode/CY48t3_AROME_fl_0914_2000m/archive/%Y/%m/%d/%H/'
@@ -45,7 +51,9 @@ CEurope_flooding_20240914_arome_2000m:
 
 GEurope_flooding_20240912_arome_500m:
 
-  file_templates : [ 'GRIBPFDEODfl_0914_500m+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s.sfx' ]
+  file_templates : [ 'GRIBPFDEODfl_0914_500m+%LLLLh00m00s',
+                     'ICMSHDEOD+%LLLLh00m00s',
+                     'ICMSHDEOD+%LLLLh00m00s.sfx' ]
 
   atos:
      path_template : 'ec:/nhac/deode/CY48t3_AROME_fl_0912_500m/archive/%Y/%m/%d/%H/'
@@ -60,7 +68,9 @@ GEurope_flooding_20240912_arome_500m:
 
 CEurope_flooding_20240912_arome_1000m:
 
-  file_templates : [ 'GRIBPFDEODfl_0914_1000m+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s.sfx' ]
+  file_templates : [ 'GRIBPFDEODfl_0914_1000m+%LLLLh00m00s',
+                     'ICMSHDEOD+%LLLLh00m00s',
+                     'ICMSHDEOD+%LLLLh00m00s.sfx' ]
 
   atos:
      path_template : 'ec:/nhac/deode/CY48t3_AROME_fl_0912_1000m/archive/%Y/%m/%d/%H/'
@@ -75,7 +85,9 @@ CEurope_flooding_20240912_arome_1000m:
 
 CEurope_flooding_20240912_arome_2000m:
 
-  file_templates : [ 'GRIBPFDEODfl_0912_2000m+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s.sfx' ]
+  file_templates : [ 'GRIBPFDEODfl_0912_2000m+%LLLLh00m00s',
+                     'ICMSHDEOD+%LLLLh00m00s',
+                     'ICMSHDEOD+%LLLLh00m00s.sfx' ]
 
   atos:
      path_template : 'ec:/sink/deode/CY48t3_AROME_fl_0912_2000m/archive/%Y/%m/%d/%H/'
@@ -90,7 +102,10 @@ CEurope_flooding_20240912_arome_2000m:
 
 AT_flooding_arome_500m:
 
-  file_templates : [ 'GRIBPFDEODAU_1500x1500_500m+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s.sfx' ]
+  file_templates : [ 'GRIBPFDEODAU_1500x1500_500m+%LLLLh00m00s',
+                     'GRIBDEOD+%LLLLh00m00s.sfx',
+                     'ICMSHDEOD+%LLLLh00m00s',
+                     'ICMSHDEOD+%LLLLh00m00s.sfx' ]
 
   atos:
      path_template : 'ectmp:/nhe/deode/CY48t3_AROME_AU_1500x1500_500m/archive/%Y/%m/%d/%H/'
@@ -105,7 +120,10 @@ AT_flooding_arome_500m:
 
 AT_flooding_harmonie_arome_500m:
 
-  file_templates : [ 'GRIBPFDEODAU_1500x1500_500m+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s.sfx' ]
+  file_templates : [ 'GRIBPFDEODAU_1500x1500_500m+%LLLLh00m00s',
+                     'GRIBDEOD+%LLLLh00m00s.sfx',
+                     'ICMSHDEOD+%LLLLh00m00s',
+                     'ICMSHDEOD+%LLLLh00m00s.sfx' ]
 
   atos:
      path_template : 'ectmp:/nhe/deode/CY46h1_HARMONIE_AROME_AU_1500x1500_500m/archive/%Y/%m/%d/%H/'
@@ -120,7 +138,10 @@ AT_flooding_harmonie_arome_500m:
 
 AT_flooding_harmonie_arome_2000m:
 
-  file_templates : [ 'GRIBPFDEODAU_384x384_2000m+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s.sfx' ]
+  file_templates : [ 'GRIBPFDEODAU_384x384_2000m+%LLLLh00m00s',
+                     'GRIBDEOD+%LLLLh00m00s.sfx',
+                     'ICMSHDEOD+%LLLLh00m00s',
+                     'ICMSHDEOD+%LLLLh00m00s.sfx' ]
 
   atos:
      path_template : 'ectmp:/nhe/deode/CY46h1_HARMONIE_AROME_AU_384x384_2000m/archive/%Y/%m/%d/%H/'
@@ -135,7 +156,10 @@ AT_flooding_harmonie_arome_2000m:
 
 CZ_flooding_arome_500m:
 
-  file_templates : [ 'GRIBPFDEODCZ_1500x1500_500m+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s.sfx' ]
+  file_templates : [ 'GRIBPFDEODCZ_1500x1500_500m+%LLLLh00m00s',
+                     'GRIBDEOD+%LLLLh00m00s.sfx',
+                     'ICMSHDEOD+%LLLLh00m00s',
+                     'ICMSHDEOD+%LLLLh00m00s.sfx' ]
 
   atos:
      path_template : 'ectmp:/nhe/deode/CY48t3_AROME_CZ_1500x1500_500m/archive/%Y/%m/%d/%H/'
@@ -150,7 +174,10 @@ CZ_flooding_arome_500m:
 
 CZ_flooding_harmonie_arome_500m:
 
-  file_templates : [ 'GRIBPFDEODCZ_1500x1500_500m+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s.sfx' ]
+  file_templates : [ 'GRIBPFDEODCZ_1500x1500_500m+%LLLLh00m00s',
+                     'GRIBDEOD+%LLLLh00m00s.sfx',
+                     'ICMSHDEOD+%LLLLh00m00s',
+                     'ICMSHDEOD+%LLLLh00m00s.sfx' ]
 
   atos:
      path_template : 'ectmp:/nhe/deode/CY46h1_HARMONIE_AROME_CZ_1500x1500_500m/archive/%Y/%m/%d/%H/'
@@ -165,7 +192,10 @@ CZ_flooding_harmonie_arome_500m:
 
 CZ_flooding_harmonie_arome_2000m:
 
-  file_templates : [ 'GRIBPFDEODCZ_384x384_2000m+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s.sfx' ]
+  file_templates : [ 'GRIBPFDEODCZ_384x384_2000m+%LLLLh00m00s',
+                     'GRIBDEOD+%LLLLh00m00s.sfx',
+                     'ICMSHDEOD+%LLLLh00m00s',
+                     'ICMSHDEOD+%LLLLh00m00s.sfx' ]
 
   atos:
      path_template : 'ectmp:/nhe/deode/CY46h1_HARMONIE_AROME_CZ_384x384_2000m/archive/%Y/%m/%d/%H/'
@@ -180,7 +210,10 @@ CZ_flooding_harmonie_arome_2000m:
 
 SV_flooding_arome_500m:
 
-  file_templates : [ 'GRIBPFDEODSV_1500x1500_500m+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s.sfx' ]
+  file_templates : [ 'GRIBPFDEODSV_1500x1500_500m+%LLLLh00m00s',
+                     'GRIBDEOD+%LLLLh00m00s.sfx',
+                     'ICMSHDEOD+%LLLLh00m00s',
+                     'ICMSHDEOD+%LLLLh00m00s.sfx' ]
 
   atos:
      path_template : 'ectmp:/nhe/deode/CY48t3_AROME_SV_1500x1500_500m/archive/%Y/%m/%d/%H/'
@@ -195,7 +228,10 @@ SV_flooding_arome_500m:
 
 SV_flooding_harmonie_arome_500m:
 
-  file_templates : [ 'GRIBPFDEODSV_1500x1500_500m+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s.sfx' ]
+  file_templates : [ 'GRIBPFDEODSV_1500x1500_500m+%LLLLh00m00s',
+                     'GRIBDEOD+%LLLLh00m00s.sfx',
+                     'ICMSHDEOD+%LLLLh00m00s',
+                     'ICMSHDEOD+%LLLLh00m00s.sfx' ]
 
   atos:
      path_template : 'ectmp:/nhe/deode/CY46h1_HARMONIE_AROME_SV_1500x1500_500m/archive/%Y/%m/%d/%H/'
@@ -210,7 +246,10 @@ SV_flooding_harmonie_arome_500m:
 
 SV_flooding_harmonie_arome_2000m:
 
-  file_templates : [ 'GRIBPFDEODSV_384x384_2000m+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s.sfx' ]
+  file_templates : [ 'GRIBPFDEODSV_384x384_2000m+%LLLLh00m00s',
+                     'GRIBDEOD+%LLLLh00m00s.sfx',
+                     'ICMSHDEOD+%LLLLh00m00s',
+                     'ICMSHDEOD+%LLLLh00m00s.sfx' ]
 
   atos:
      path_template : 'ectmp:/nhe/deode/CY46h1_HARMONIE_AROME_SV_384x384_2000m/archive/%Y/%m/%d/%H/'
