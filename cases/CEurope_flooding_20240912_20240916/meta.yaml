@@ -136,6 +136,22 @@ AT_flooding_harmonie_arome_500m:
      resolution : 500
      levels : 90
 
+AT_flooding_alaro_500m:
+
+  file_templates : [ 'GRIBPFDEODAU_1500x1500_500m+%LLLLh00m00s',
+                     'ICMSHDEOD+%LLLLh00m00s' ]
+
+  atos:
+     path_template : 'ectmp:/nhe/deode/CY48t3_ALARO_AU_1500x1500_500m/archive/%Y/%m/%d/%H/'
+
+  lumi_transfer:
+     path_template : ''
+  
+  domain : 
+     name : 'AU_1500x1500_500m'
+     resolution : 500
+     levels : 90
+
 AT_flooding_harmonie_arome_2000m:
 
   file_templates : [ 'GRIBPFDEODAU_384x384_2000m+%LLLLh00m00s',
@@ -163,6 +179,22 @@ CZ_flooding_arome_500m:
 
   atos:
      path_template : 'ectmp:/nhe/deode/CY48t3_AROME_CZ_1500x1500_500m/archive/%Y/%m/%d/%H/'
+
+  lumi_transfer:
+     path_template : ''
+  
+  domain : 
+     name : 'CZ_1500x1500_500m'
+     resolution : 500
+     levels : 90
+
+CZ_flooding_alaro_500m:
+
+  file_templates : [ 'GRIBPFDEODCZ_1500x1500_500m+%LLLLh00m00s',
+                     'ICMSHDEOD+%LLLLh00m00s' ]
+
+  atos:
+     path_template : 'ectmp:/nhe/deode/CY48t3_ALARO_CZ_1500x1500_500m/archive/%Y/%m/%d/%H/'
 
   lumi_transfer:
      path_template : ''
@@ -217,6 +249,22 @@ SV_flooding_arome_500m:
 
   atos:
      path_template : 'ectmp:/nhe/deode/CY48t3_AROME_SV_1500x1500_500m/archive/%Y/%m/%d/%H/'
+
+  lumi_transfer:
+     path_template : ''
+  
+  domain : 
+     name : 'SV_1500x1500_500m'
+     resolution : 500
+     levels : 90
+
+SV_flooding_alaro_500m:
+
+  file_templates : [ 'GRIBPFDEODSV_1500x1500_500m+%LLLLh00m00s',
+                     'ICMSHDEOD+%LLLLh00m00s' ]
+
+  atos:
+     path_template : 'ectmp:/nhe/deode/CY48t3_ALARO_SV_1500x1500_500m/archive/%Y/%m/%d/%H/'
 
   lumi_transfer:
      path_template : ''
