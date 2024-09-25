@@ -1,0 +1,11 @@
+DTF_Conv_23Sep2024_00Z_Fin: 
+
+  file_templates : ['GRIBPFDEODFin_dom1_500m+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s.sfx']
+
+  atos:
+    path_template : 'ec:deode/CY46h1_HAR_ARO_DTF_Conv_23Sep2024_00Z_Fin_dom1_500m/archive/%Y/%m/%d/%H/'
+
+  domain : 
+    name : 'Fin_dom1_500m'
+    resolution : 500
+    levels : 90
