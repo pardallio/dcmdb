@@ -9,3 +9,30 @@ DTF_Conv_23Sep2024_00Z_Fin:
     name : 'Fin_dom1_500m'
     resolution : 500
     levels : 90
+
+DTF_Storm_Fin_24Sep2024:
+
+  file_templates : ['GRIBPFDEODFin_24Sep2024_dom3+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s.sfx']
+
+  atos:
+    path_template : 'ec:deode/CY46h1_HAR_ARO_DTF_Storm_Fin_24Sep2024_dom3_500m/archive/%Y/%m/%d/%H/'
+
+  domain :
+    name : 'Fin_24Sep2024_dom3'
+    resolution : 500
+    levels : 90
+
+
+DTF_Storm_Swe_24Sep2024:
+
+  file_templates : ['GRIBPFDEODSwe_24Sep2024_dom5+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s.sfx']
+
+  atos:
+    path_template : 'ec:deode/CY46h1_HAR_ARO_DTF_Storm_Swe_24Sep2024_dom5_500m/archive/%Y/%m/%d/%H/'
+
+  domain :
+    name : 'Swe_24Sep2024_dom5'
+    resolution : 500
+    levels : 90
+
+
