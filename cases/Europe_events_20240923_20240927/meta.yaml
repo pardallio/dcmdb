@@ -22,7 +22,6 @@ DTF_Storm_Fin_24Sep2024:
     resolution : 500
     levels : 90
 
-
 DTF_Storm_Swe_24Sep2024:
 
   file_templates : ['GRIBPFDEODSwe_24Sep2024_dom5+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s.sfx']
@@ -32,6 +31,66 @@ DTF_Storm_Swe_24Sep2024:
 
   domain :
     name : 'Swe_24Sep2024_dom5'
+    resolution : 500
+    levels : 90
+
+DTF_Storm_Spain_24Sep2024:
+
+  file_templates : ['GRIBPFDEODSPAIN+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s.sfx']
+
+  atos:
+    path_template : 'ec:/dnk1635/deode/CY46h1_HARMONIE_AROME_SPAIN_FLOODING_24092024/archive/%Y/%m/%d/%H/'
+
+  domain :
+    name : 'SPAIN'
+    resolution : 500
+    levels : 90
+
+DTF_Storm_France_24Sep2024:
+
+  file_templates : ['GRIBPFDEODFRANCE+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s.sfx']
+
+  atos:
+    path_template : 'ec:/dnk1635/deode/CY48t3_AROME_FRANCE_24092024/archive/%Y/%m/%d/%H/'
+
+  domain :
+    name : 'FRANCE'
+    resolution : 500
+    levels : 90
+
+DTF_Storm_France_26Sep2024:
+
+  file_templates : ['GRIBPFDEODFRANCE_1500x1500+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s.sfx']
+
+  atos:
+    path_template : 'ec:/dnk1635/deode/CY48t3_AROME_FRANCE_1500x1500_26092024/archive/%Y/%m/%d/%H/'
+
+  domain :
+    name : 'FRANCE_1500x1500'
+    resolution : 500
+    levels : 90
+
+DTF_Storm_Germany_26Sep2024:
+
+  file_templates : ['GRIBPFDEODGERMANY+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s.sfx']
+
+  atos:
+    path_template : 'ec:/dnk1635/deode/CY48t3_AROME_GERMANY_26092024/archive/%Y/%m/%d/%H/'
+
+  domain :
+    name : 'GERMANY'
+    resolution : 500
+    levels : 90
+
+DTF_Flooding_Denmark_26Sep2024:
+
+  file_templates : ['GRIBPFDEODDK_1500x1500_500m+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s.sfx']
+
+  atos:
+    path_template : 'ec:/dnk1635/deode/CY46h1_HARMONIE_AROME_DK_1500x1500_500m_FLOODING_26092024/archive/%Y/%m/%d/%H/'
+
+  domain :
+    name : 'DK_1500x1500_500m'
     resolution : 500
     levels : 90
 
