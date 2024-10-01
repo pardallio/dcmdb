@@ -3,7 +3,7 @@ DTF_Conv_23Sep2024_00Z_Fin:
   file_templates : ['GRIBPFDEODFin_dom1_500m+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s.sfx']
 
   atos:
-    path_template : 'ec:deode/CY46h1_HAR_ARO_DTF_Conv_23Sep2024_00Z_Fin_dom1_500m/archive/%Y/%m/%d/%H/'
+    path_template : 'ec:/fie/deode/CY46h1_HAR_ARO_DTF_Conv_23Sep2024_00Z_Fin_dom1_500m/archive/%Y/%m/%d/%H/'
 
   domain : 
     name : 'Fin_dom1_500m'
@@ -15,7 +15,7 @@ DTF_Storm_Fin_24Sep2024:
   file_templates : ['GRIBPFDEODFin_24Sep2024_dom3+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s.sfx']
 
   atos:
-    path_template : 'ec:deode/CY46h1_HAR_ARO_DTF_Storm_Fin_24Sep2024_dom3_500m/archive/%Y/%m/%d/%H/'
+    path_template : 'ec:/fie/deode/CY46h1_HAR_ARO_DTF_Storm_Fin_24Sep2024_dom3_500m/archive/%Y/%m/%d/%H/'
 
   domain :
     name : 'Fin_24Sep2024_dom3'
@@ -27,10 +27,58 @@ DTF_Storm_Swe_24Sep2024:
   file_templates : ['GRIBPFDEODSwe_24Sep2024_dom5+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s.sfx']
 
   atos:
-    path_template : 'ec:deode/CY46h1_HAR_ARO_DTF_Storm_Swe_24Sep2024_dom5_500m/archive/%Y/%m/%d/%H/'
+    path_template : 'ec:/fie/deode/CY46h1_HAR_ARO_DTF_Storm_Swe_24Sep2024_dom5_500m/archive/%Y/%m/%d/%H/'
 
   domain :
     name : 'Swe_24Sep2024_dom5'
+    resolution : 500
+    levels : 90
+
+DTF_Storm_Ger_25Sep2024:
+
+  file_templates : ['GRIBPFDEODGer_25Sep2024_dom4+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s.sfx']
+
+  atos:
+    path_template : 'ec:/fie/deode/CY48t3_AROME_DTF_Storm_Ger_25Sep2024_dom4_500m/archive/%Y/%m/%d/%H/'
+
+  domain :
+    name : 'Ger_25Sep2024_dom4'
+    resolution : 500
+    levels : 90
+
+DTF_Conv_Aut_26Sep2024:
+
+  file_templates : ['GRIBPFDEODAut_dom1_500m+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s.sfx']
+
+  atos:
+    path_template : 'ec:/fie/deode/CY48t3_AROME_DTF_Conv_26Sep2024_Aut_dom1_500m/archive/%Y/%m/%d/%H/'
+
+  domain :
+    name : 'Aut_dom1_500m'
+    resolution : 500
+    levels : 90
+
+DTF_Storm_Fin_26Sep2024:
+
+  file_templates : ['GRIBPFDEODFin_dom5_500m+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s.sfx']
+
+  atos:
+    path_template : 'ec:/fie/deode/CY46h1_HAR_ARO_DTF_Storm_26Sep2024_Fin_dom5_500m/archive/%Y/%m/%d/%H/'
+
+  domain :
+    name : 'Fin_dom5_500m'
+    resolution : 500
+    levels : 90
+
+DTF_Conv_BalticS_27Sep2024:
+
+  file_templates : ['GRIBPFDEODBalticS_dom1_500m+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s','ICMSHDEOD+%LLLLh00m00s.sfx']
+
+  atos:
+    path_template : 'ec:/fie/deode/CY46h1_HAR_ARO_DTF_Conv_27Sep2024_BalticS_dom1_500m/archive/%Y/%m/%d/%H/'
+
+  domain :
+    name : 'BalticS_dom1_500m'
     resolution : 500
     levels : 90
 
